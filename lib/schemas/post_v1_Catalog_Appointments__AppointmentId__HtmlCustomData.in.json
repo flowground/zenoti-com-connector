@@ -1,0 +1,13 @@
+{
+    "type": "object",
+    "properties": {
+        "AppointmentId": {
+            "required": true,
+            "type": "string"
+        },
+        "requestBody": {
+            "description": "Description for the Json fields in the Input Json\n\n|  Field | Value Type | Description |\n| -------- | -------- | -------- |\n| Data     | Json Object     | Form data in Json form     |\n| Guest Data     | string     | Guest Details     |\n| IsFormSubmitted     | bool     | Form Status    |\n\n",
+            "type": "object"
+        }
+    }
+}

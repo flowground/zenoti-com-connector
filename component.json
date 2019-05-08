@@ -1,0 +1,3818 @@
+{
+    "title": "Zenoti Open",
+    "description": "Zenoti Open APIs now help you manage the powerful capabilities offered through a suite of Open APIs. \n\n",
+    "docsUrl": "",
+    "url": "https://api.apis.guru/v2/specs/zenoti.com/1.0.0/swagger.json",
+    "envVars": {
+        "OAUTH_CLIENT_ID": {
+            "description": "OAuth Client ID"
+        },
+        "OAUTH_CLIENT_SECRET": {
+            "description": "OAuth Client Secret"
+        }
+    },
+    "credentials": {
+        "fields": {
+            "server": {
+                "label": "Server",
+                "viewClass": "SelectView",
+                "model": [
+                    "https://apis.zenoti.com/",
+                    "--- Custom URL"
+                ],
+                "required": true
+            },
+            "otherServer": {
+                "label": "Custom Server URL",
+                "viewClass": "TextFieldView"
+            },
+            "Authorization": {
+                "label": "Authorization",
+                "viewClass": "OAuthFieldView"
+            },
+            "username": {
+                "label": "Username (API_Key)",
+                "viewClass": "TextFieldView",
+                "note": "All callers must pass an API Key issued to the developer in the header,  otherwise, the API call will be rejected. Please refer http://developers.zenoti.com/apikey for instructions on how to obtain an API key. The key must be passed in the 'Authorization' header, prefixed with 'apikey '"
+            },
+            "password": {
+                "label": "Password (API_Key)",
+                "viewClass": "TextFieldView",
+                "note": "All callers must pass an API Key issued to the developer in the header,  otherwise, the API call will be rejected. Please refer http://developers.zenoti.com/apikey for instructions on how to obtain an API key. The key must be passed in the 'Authorization' header, prefixed with 'apikey '"
+            }
+        },
+        "oauth2": {
+            "client_id": "{{OAUTH_CLIENT_ID}}",
+            "client_secret": "{{OAUTH_CLIENT_SECRET}}",
+            "auth_uri": "/",
+            "token_uri": "/"
+        }
+    },
+    "triggers": {
+        "startFlow": {
+            "main": "./lib/triggers/startFlow.js",
+            "type": "polling",
+            "title": "Start Flow",
+            "fields": {}
+        }
+    },
+    "actions": {
+        "get_packages__packageId_": {
+            "main": "./lib/actions/get_packages__packageId_.js",
+            "title": "Get details of package",
+            "description": "Returns details of a package",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/get_packages__packageId_.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "x_restlet_packages__packageId_": {
+            "main": "./lib/actions/x_restlet_packages__packageId_.js",
+            "title": "x_restlet_packages__packageId_",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/x_restlet_packages__packageId_.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "post_v1_Catalog_Appointments_AvailableTimes": {
+            "main": "./lib/actions/post_v1_Catalog_Appointments_AvailableTimes.js",
+            "title": "/v1/Catalog/Appointments/AvailableTimes",
+            "description": "Returns the open slots for the requested date and service at the requested center. \nOptionally, you can request a specific therapist to perform a service. In this case, the API returns the available slots for that therapist.\n\nTo get the slots, one has to request the following:\n\n| Key | Type | Description |\n| -------- | -------- | -------- |\n|  RequiredSlotsCount | int| No of Slots you would like to request |\n|  CenterId `*` | GUID | Unique Identifier of a Center |\n|  CenterDate `*` | YYYY-MM-DDThh:mm:ssZ| Date of the availability you would like to check |\n|  SlotBookings `*` |Array of *`slotBooking`* object| Service id has to be passed inside SlotBookings object. Service Id is mandatory. Optionally, you can pass Therapist Id too. For more details, refer to *'SlotBooking'* object |\n\n\nNote: Fields marked with  `*` are Mandatory. \n\nExample Request:\n\n```\n{\n \"CenterId\":\"3af2cf2e-9d36-45ca-84bc-eb7a7ee4be0e\",\n \"CenterDate\":\"2017-10-25\",\n \"SlotBookings\":[\n {\n   \"Services\":[{\n     \"Service\":{\n       \"Id\":\"ac3589f0-f3a0-4772-b2c5-f6e1c81312db\"\n     },\n      \"RequestedTherapist\": {\n                        \"Id\": \"1a08e842-77c8-49b4-9d42-336c2dea4c0b\"\n     \t\n     }\n   }]\n }]\n}\n```",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/post_v1_Catalog_Appointments_AvailableTimes.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "x_restlet_v1_Catalog_Appointments_AvailableTimes": {
+            "main": "./lib/actions/x_restlet_v1_Catalog_Appointments_AvailableTimes.js",
+            "title": "x_restlet_v1_Catalog_Appointments_AvailableTimes",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/x_restlet_v1_Catalog_Appointments_AvailableTimes.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "post_v1_Catalog_Appointments_ConfirmReservation": {
+            "main": "./lib/actions/post_v1_Catalog_Appointments_ConfirmReservation.js",
+            "title": "/v1/Catalog/Appointments/ConfirmReservation",
+            "description": "Returns the confirmed reservation.\n\nRequest body parameters:\n\n| Fields | Value type | Description |\n| -------- | -------- |  -------- |\n| ReservationNotes  | string     | Optional Notes at the time of confirmation\n| ApplyAutomaticMembership     | bool     | Set it to 'true' if you want to apply membership\n| CenterId `*`    | GUID     | Unique Identifier of the center\n| ReservationId  `*`   | GUID     | Unique Identifier of the Reservation from the ReserveSlots API Response\n| BookingSource   | Enum - `Store = 0,Mobile = 1,Web = 2 `    | Source of the API caller\n\n\nNote: Fields marked with `*` are mandatory.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/post_v1_Catalog_Appointments_ConfirmReservation.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "x_restlet_v1_Catalog_Appointments_ConfirmReservation": {
+            "main": "./lib/actions/x_restlet_v1_Catalog_Appointments_ConfirmReservation.js",
+            "title": "x_restlet_v1_Catalog_Appointments_ConfirmReservation",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/x_restlet_v1_Catalog_Appointments_ConfirmReservation.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "post_v1_Catalog_Appointments_ReserveSlots": {
+            "main": "./lib/actions/post_v1_Catalog_Appointments_ReserveSlots.js",
+            "title": "/v1/Catalog/Appointments/ReserveSlots",
+            "description": "Reserves slots for the Appointment based on CenterId, CenterTime, GuestId, ServiceId and optionally, TherapistId.\n\nThe following are the details of the request\n\n| key | Value type | Description |\n| -------- | -------- |  -------- |\n|CreateInvoice| boolean| Set this to 'true' if you want Invoice to be created |\n|  ForceApplyAutomaticMembership| boolean| Set this to 'true' if you want to apply membership of the user |\n|  CenterId `*` | GUID| Unique Identifier of the center |\n|  CenterTime `*` | YYYY-MM-DDThh:mm:ssZ| Your preferred time slot |\n|  ReservationNotes | string| Optional notes during the reservation |\n|  SlotBookings `*` |Array of *slotBooking* object| This must  contain ServiceId and GuestId. Refer to *slotBooking* for structure. You can optionally pass TherapistId\n\nNote: Fields marked with `*` are mandatory.\n\nExample Request : \n```\n{\n  \"CreateInvoice\": true,\n  \"ForceApplyAutomaticMembership\": true,\n \"CenterId\":\"3af2cf2e-9d36-45ca-84bc-eb7a7ee4be0e\",\n \"CenterTime\": \"2017-09-27T17:00:00\",\n \"SlotBookings\":[\n {\n   \"GuestId\": \"e08a1e29-29b5-4757-abd6-6ed0a09b9f94\",\n   \"Services\":[{\n     \"Service\":{\n       \"Id\":\"ac3589f0-f3a0-4772-b2c5-f6e1c81312db\"\n     },\n     \"RequestTherapistGender\":3,\n     \"RequestedTherapist\": {\n                        \"Id\": \"1a08e842-77c8-49b4-9d42-336c2dea4c0b\"\n     \t\n     }\n   }]\n }]\n}\n```",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/post_v1_Catalog_Appointments_ReserveSlots.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "x_restlet_v1_Catalog_Appointments_ReserveSlots": {
+            "main": "./lib/actions/x_restlet_v1_Catalog_Appointments_ReserveSlots.js",
+            "title": "x_restlet_v1_Catalog_Appointments_ReserveSlots",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/x_restlet_v1_Catalog_Appointments_ReserveSlots.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "get_v1_Catalog_Appointments__AppointmentGroupId__Feedback": {
+            "main": "./lib/actions/get_v1_Catalog_Appointments__AppointmentGroupId__Feedback.js",
+            "title": "/v1/Catalog/Appointments/{AppointmentGroupId}/Feedback",
+            "description": "Gets Feedback for a AppointmentgroupId.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/get_v1_Catalog_Appointments__AppointmentGroupId__Feedback.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "post_v1_Catalog_Appointments__AppointmentGroupId__Feedback": {
+            "main": "./lib/actions/post_v1_Catalog_Appointments__AppointmentGroupId__Feedback.js",
+            "title": "/v1/Catalog/Appointments/{AppointmentGroupId}/Feedback",
+            "description": "Creates Feedback for a AppointmentgroupId.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/post_v1_Catalog_Appointments__AppointmentGroupId__Feedback.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "x_restlet_v1_Catalog_Appointments__AppointmentGroupId__Feedback": {
+            "main": "./lib/actions/x_restlet_v1_Catalog_Appointments__AppointmentGroupId__Feedback.js",
+            "title": "x_restlet_v1_Catalog_Appointments__AppointmentGroupId__Feedback",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/x_restlet_v1_Catalog_Appointments__AppointmentGroupId__Feedback.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "post_v1_Catalog_Appointments__AppointmentId__AddOnService": {
+            "main": "./lib/actions/post_v1_Catalog_Appointments__AppointmentId__AddOnService.js",
+            "title": "/v1/Catalog/Appointments/{AppointmentId}/AddOnService",
+            "description": "Adds an Add on service To an Existing Appointment of the user.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/post_v1_Catalog_Appointments__AppointmentId__AddOnService.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "x_restlet_v1_Catalog_Appointments__AppointmentId__AddOnService": {
+            "main": "./lib/actions/x_restlet_v1_Catalog_Appointments__AppointmentId__AddOnService.js",
+            "title": "x_restlet_v1_Catalog_Appointments__AppointmentId__AddOnService",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/x_restlet_v1_Catalog_Appointments__AppointmentId__AddOnService.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "post_v1_Catalog_Appointments__AppointmentId__Cancel": {
+            "main": "./lib/actions/post_v1_Catalog_Appointments__AppointmentId__Cancel.js",
+            "title": "/v1/Catalog/Appointments/{AppointmentId}/Cancel",
+            "description": "Changes the appointment status to cancelled and also returns a boolean for \"IsCancelChargesApplied\" feild.\n\nAppointment status(\"Status\" feild) of cancelled is -1.\n\n|status|enum|\n| -------- | -------- |\n| NoShow | -2|\n|Cancelled | -1|\n|New | 0|\n|Closed | 1|\n|Checkin | 2|\n|Confirm | 4|\n| Break | 10|\n|NotSpecified | 11|\n|Available | 20|\n",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/post_v1_Catalog_Appointments__AppointmentId__Cancel.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "x_restlet_v1_Catalog_Appointments__AppointmentId__Cancel": {
+            "main": "./lib/actions/x_restlet_v1_Catalog_Appointments__AppointmentId__Cancel.js",
+            "title": "x_restlet_v1_Catalog_Appointments__AppointmentId__Cancel",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/x_restlet_v1_Catalog_Appointments__AppointmentId__Cancel.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "get_v1_Catalog_Appointments__AppointmentId__CustomData_Html": {
+            "main": "./lib/actions/get_v1_Catalog_Appointments__AppointmentId__CustomData_Html.js",
+            "title": "/v1/Catalog/Appointments/{AppointmentId}/CustomData/Html",
+            "description": "Gets the Html form for a particular AppointmentId",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/get_v1_Catalog_Appointments__AppointmentId__CustomData_Html.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "x_restlet_v1_Catalog_Appointments__AppointmentId__CustomData_Html": {
+            "main": "./lib/actions/x_restlet_v1_Catalog_Appointments__AppointmentId__CustomData_Html.js",
+            "title": "x_restlet_v1_Catalog_Appointments__AppointmentId__CustomData_Html",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/x_restlet_v1_Catalog_Appointments__AppointmentId__CustomData_Html.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "get_v1_Catalog_Appointments__AppointmentId__HtmlCustomData": {
+            "main": "./lib/actions/get_v1_Catalog_Appointments__AppointmentId__HtmlCustomData.js",
+            "title": "/v1/Catalog/Appointments/{AppointmentId}/HtmlCustomData",
+            "description": "Gets the Html form data for a particular AppointmentId",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/get_v1_Catalog_Appointments__AppointmentId__HtmlCustomData.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "post_v1_Catalog_Appointments__AppointmentId__HtmlCustomData": {
+            "main": "./lib/actions/post_v1_Catalog_Appointments__AppointmentId__HtmlCustomData.js",
+            "title": "/v1/Catalog/Appointments/{AppointmentId}/HtmlCustomData",
+            "description": "Creates a Html form data for a particular AppointmentId",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/post_v1_Catalog_Appointments__AppointmentId__HtmlCustomData.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "x_restlet_v1_Catalog_Appointments__AppointmentId__HtmlCustomData": {
+            "main": "./lib/actions/x_restlet_v1_Catalog_Appointments__AppointmentId__HtmlCustomData.js",
+            "title": "x_restlet_v1_Catalog_Appointments__AppointmentId__HtmlCustomData",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/x_restlet_v1_Catalog_Appointments__AppointmentId__HtmlCustomData.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "post_v1_Catalog_Appointments__ReservationId__CancelReservation": {
+            "main": "./lib/actions/post_v1_Catalog_Appointments__ReservationId__CancelReservation.js",
+            "title": "/v1/Catalog/Appointments/{ReservationId}/CancelReservation",
+            "description": "Cancels a Reservation.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/post_v1_Catalog_Appointments__ReservationId__CancelReservation.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "x_restlet_v1_Catalog_Appointments__ReservationId__CancelReservation": {
+            "main": "./lib/actions/x_restlet_v1_Catalog_Appointments__ReservationId__CancelReservation.js",
+            "title": "x_restlet_v1_Catalog_Appointments__ReservationId__CancelReservation",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/x_restlet_v1_Catalog_Appointments__ReservationId__CancelReservation.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "get_v1_Catalog_Centers": {
+            "main": "./lib/actions/get_v1_Catalog_Centers.js",
+            "title": "/v1/Catalog/Centers",
+            "description": "Gets the list of centers in the organization. Optionally, you can pass one or more Service Ids to see the Service-Specific centers that are available.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/get_v1_Catalog_Centers.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "x_restlet_v1_Catalog_Centers": {
+            "main": "./lib/actions/x_restlet_v1_Catalog_Centers.js",
+            "title": "x_restlet_v1_Catalog_Centers",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/x_restlet_v1_Catalog_Centers.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "get_v1_Catalog_Centers_Organization": {
+            "main": "./lib/actions/get_v1_Catalog_Centers_Organization.js",
+            "title": "/v1/Catalog/Centers/Organization",
+            "description": "Gets List of all the Centers in the Organization",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/get_v1_Catalog_Centers_Organization.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "x_restlet_v1_Catalog_Centers_Organization": {
+            "main": "./lib/actions/x_restlet_v1_Catalog_Centers_Organization.js",
+            "title": "x_restlet_v1_Catalog_Centers_Organization",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/x_restlet_v1_Catalog_Centers_Organization.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "get_v1_Catalog_Guests_CheckUserName": {
+            "main": "./lib/actions/get_v1_Catalog_Guests_CheckUserName.js",
+            "title": "/v1/Catalog/Guests/CheckUserName",
+            "description": "Check if the guest is already existing in the system based on UserName. UserName is mandatory",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/get_v1_Catalog_Guests_CheckUserName.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "x_restlet_v1_Catalog_Guests_CheckUserName": {
+            "main": "./lib/actions/x_restlet_v1_Catalog_Guests_CheckUserName.js",
+            "title": "x_restlet_v1_Catalog_Guests_CheckUserName",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/x_restlet_v1_Catalog_Guests_CheckUserName.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "post_v1_Catalog_Guests_ForgottenPassword": {
+            "main": "./lib/actions/post_v1_Catalog_Guests_ForgottenPassword.js",
+            "title": "/v1/Catalog/Guests/ForgottenPassword",
+            "description": "Get password reset link",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/post_v1_Catalog_Guests_ForgottenPassword.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "x_restlet_v1_Catalog_Guests_ForgottenPassword": {
+            "main": "./lib/actions/x_restlet_v1_Catalog_Guests_ForgottenPassword.js",
+            "title": "x_restlet_v1_Catalog_Guests_ForgottenPassword",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/x_restlet_v1_Catalog_Guests_ForgottenPassword.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "get_v1_Catalog_Guests_Guest__GuestId__CreditCardsOnFile": {
+            "main": "./lib/actions/get_v1_Catalog_Guests_Guest__GuestId__CreditCardsOnFile.js",
+            "title": "/v1/Catalog/Guests/{GuestId}/CreditCardsOnFile",
+            "description": "Gets the Credit Cards on File for guest\n\nTransaction Form\n\n| Enum | Value | \n| -------- | -------- | \n| Web     | 1     |\n| WebStore     | 2     |\n| CheckWeb     | 4     |\n| Mobile     | 8     |\n| MobilePOS     | 16     | ",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/get_v1_Catalog_Guests_Guest__GuestId__CreditCardsOnFile.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "x_restlet_v1_Catalog_Guests_Guest__GuestId__CreditCardsOnFile": {
+            "main": "./lib/actions/x_restlet_v1_Catalog_Guests_Guest__GuestId__CreditCardsOnFile.js",
+            "title": "x_restlet_v1_Catalog_Guests_Guest__GuestId__CreditCardsOnFile",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/x_restlet_v1_Catalog_Guests_Guest__GuestId__CreditCardsOnFile.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "get_v1_Catalog_Guests_Guests_Memberships__UserMembershipId_": {
+            "main": "./lib/actions/get_v1_Catalog_Guests_Guests_Memberships__UserMembershipId_.js",
+            "title": "/v1/Catalog/Guests/Memberships/{UserMembershipId}",
+            "description": "Get balance details of a User MembershipId",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/get_v1_Catalog_Guests_Guests_Memberships__UserMembershipId_.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "x_restlet_v1_Catalog_Guests_Guests_Memberships__UserMembershipId_": {
+            "main": "./lib/actions/x_restlet_v1_Catalog_Guests_Guests_Memberships__UserMembershipId_.js",
+            "title": "x_restlet_v1_Catalog_Guests_Guests_Memberships__UserMembershipId_",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/x_restlet_v1_Catalog_Guests_Guests_Memberships__UserMembershipId_.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "get_v1_Catalog_Guests_Guests__GuestId_": {
+            "main": "./lib/actions/get_v1_Catalog_Guests_Guests__GuestId_.js",
+            "title": "/v1/Catalog/Guests/{GuestId}",
+            "description": "Obtain profile details of a guest user.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/get_v1_Catalog_Guests_Guests__GuestId_.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "x_restlet_v1_Catalog_Guests_Guests__GuestId_": {
+            "main": "./lib/actions/x_restlet_v1_Catalog_Guests_Guests__GuestId_.js",
+            "title": "x_restlet_v1_Catalog_Guests_Guests__GuestId_",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/x_restlet_v1_Catalog_Guests_Guests__GuestId_.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "post_v1_Catalog_Guests_Logout": {
+            "main": "./lib/actions/post_v1_Catalog_Guests_Logout.js",
+            "title": "/v1/Catalog/Guests/Logout",
+            "description": "Delete a token on logout",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/post_v1_Catalog_Guests_Logout.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "x_restlet_v1_Catalog_Guests_Logout": {
+            "main": "./lib/actions/x_restlet_v1_Catalog_Guests_Logout.js",
+            "title": "x_restlet_v1_Catalog_Guests_Logout",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/x_restlet_v1_Catalog_Guests_Logout.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "get_v1_Catalog_Guests_LoyaltyPrograms": {
+            "main": "./lib/actions/get_v1_Catalog_Guests_LoyaltyPrograms.js",
+            "title": "/v1/Catalog/Guests/LoyaltyPrograms",
+            "description": "Gets the Loyalty Programs that the guest possesses. Additionally, it fetches the following details of Loyalty Programs:\n| Id | Name | Balance |\n| -------- | -------- | -------- |\n| 61acbc7a-a37e-43ea-8a94-b1bf0aa6518e     | lp test     | 1987     |\n\n",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/get_v1_Catalog_Guests_LoyaltyPrograms.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "x_restlet_v1_Catalog_Guests_LoyaltyPrograms": {
+            "main": "./lib/actions/x_restlet_v1_Catalog_Guests_LoyaltyPrograms.js",
+            "title": "x_restlet_v1_Catalog_Guests_LoyaltyPrograms",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/x_restlet_v1_Catalog_Guests_LoyaltyPrograms.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "get_v1_Catalog_Guests_LoyaltyPrograms_Summary": {
+            "main": "./lib/actions/get_v1_Catalog_Guests_LoyaltyPrograms_Summary.js",
+            "title": "/v1/Catalog/Guests/LoyaltyPrograms/Summary",
+            "description": "Returns the summary of loyalty points of a guest. It contains the following:\n\n1. Balance\n1. TierName\n1. StartDate\n1. EnrollmentStatus\n1. LPTierMaintainSpent\n1. SpentTillNow\n1. DowngradeDate\n1. DirectEnrollment\n1. ByPassDowngrade\n1. RecentEnrollDate\n1. PointsToSpendToStayInSameTierByDowngradeDate",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/get_v1_Catalog_Guests_LoyaltyPrograms_Summary.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "x_restlet_v1_Catalog_Guests_LoyaltyPrograms_Summary": {
+            "main": "./lib/actions/x_restlet_v1_Catalog_Guests_LoyaltyPrograms_Summary.js",
+            "title": "x_restlet_v1_Catalog_Guests_LoyaltyPrograms_Summary",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/x_restlet_v1_Catalog_Guests_LoyaltyPrograms_Summary.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "get_v1_Catalog_Guests_LoyaltyPrograms__ProgramId_": {
+            "main": "./lib/actions/get_v1_Catalog_Guests_LoyaltyPrograms__ProgramId_.js",
+            "title": "/v1/Catalog/Guests/LoyaltyPrograms/{ProgramId}",
+            "description": "Additional details of a particular Loyalty Program of a Guest by Program Id are returned, transaction wise.\n\n* GuestId\n* InvoiceId\n* AppGroupId(AppointmentGroupId)\n* CenterName\n* ByPassDowngrade\n* PointsDate\n* RedemptionFrom\n* RedemptionTo\n* CreateDate\n* Loyalty Program Details - Id, Name, Earned, Redeemed, Available",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/get_v1_Catalog_Guests_LoyaltyPrograms__ProgramId_.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "x_restlet_v1_Catalog_Guests_LoyaltyPrograms__ProgramId_": {
+            "main": "./lib/actions/x_restlet_v1_Catalog_Guests_LoyaltyPrograms__ProgramId_.js",
+            "title": "x_restlet_v1_Catalog_Guests_LoyaltyPrograms__ProgramId_",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/x_restlet_v1_Catalog_Guests_LoyaltyPrograms__ProgramId_.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "get_v1_Catalog_Guests_PastAppointments": {
+            "main": "./lib/actions/get_v1_Catalog_Guests_PastAppointments.js",
+            "title": "/v1/Catalog/Guests/PastAppointments",
+            "description": "To get the list of past bookings for the logged in guest",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/get_v1_Catalog_Guests_PastAppointments.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "x_restlet_v1_Catalog_Guests_PastAppointments": {
+            "main": "./lib/actions/x_restlet_v1_Catalog_Guests_PastAppointments.js",
+            "title": "x_restlet_v1_Catalog_Guests_PastAppointments",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/x_restlet_v1_Catalog_Guests_PastAppointments.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "post_v1_Catalog_Guests_Register": {
+            "main": "./lib/actions/post_v1_Catalog_Guests_Register.js",
+            "title": "/v1/Catalog/Guests/Register",
+            "description": "Creates a new guest user account by providing the mandatory fields. First name and Last name are mandatory. According to your organization settings, email/phone number is mandatory to maintain uniqueness of the guest. Along side, the recent verificationId has to be passed in the request. CenterId is mandatory.\n\nThe request contains the following:\n\n\n\n| Field | Value Type | Description |\n| -------- | -------- | -------- |\n| VerificationId   `*` | GUID     | VerificationId you get from OTP API\n| CenterId  `*`   | GUID     | Unique Identifier. Guest should register at a center\n| Guest   `*`  | `Guest Model` object     | FirstName, LastName, Gender, Mobile Number, Email, Password\n\nFields marked with `*` are mandatory.\n\nExapmle request : \n\n```\n{\n  \"VerificationId\": \"string\",\n  \"CenterId\": \"string\",\n  \"Guest\": {\n    \"FirstName\": \"string\",\n    \"LastName\": \"string\",\n    \"Email\": \"string\",\n    \"MobileNumber\": \"string\",\n    \"MobilePhoneModel\": {\n      \"CountryId\": 0,\n      \"Number\": \"string\",\n      \"DisplayNumber\": \"string\"\n    },\n    \"Gender\": 0,\n    \"DateOfBirth\": \"2017-09-13T04:48:01.773Z\",\n    \"AnniversaryDate\": \"2017-09-13T04:48:01.773Z\",\n    \"Address1\": \"string\",\n    \"Address2\": \"string\",\n    \"City\": \"string\",\n    \"PostalCode\": \"string\",\n    \"State\": {\n      \"Id\": 0,\n      \"Code\": \"string\",\n      \"Name\": \"string\",\n      \"ShortName\": \"string\"\n    },\n    \"Country\": {\n      \"Id\": 0,\n      \"Code\": \"string\",\n      \"Name\": \"string\",\n      \"PhoneCode\": 0,\n      \"Nationality\": \"string\"\n    },\n    \"Nationality\": {\n      \"Id\": 0,\n      \"Code\": \"string\",\n      \"Name\": \"string\",\n      \"PhoneCode\": 0,\n      \"Nationality\": \"string\"\n    },\n    \"ReferralSource\": {\n      \"Id\": \"string\",\n      \"Name\": \"string\"\n    },\n    \"ReferredGuestId\": \"string\",\n    \"ReceiveTransactionalSms\": true,\n    \"ReceiveMarketingEmail\": true,\n    \"ReceiveTransactionalEmail\": true,\n    \"ReceiveMarketingSms\": true,\n    \"DOB_IncompleteYear\": \"string\",\n    \"Password\": \"string\",\n    \"UserName\": \"string\",\n  }\n}\n```\n\n\n",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/post_v1_Catalog_Guests_Register.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "x_restlet_v1_Catalog_Guests_Register": {
+            "main": "./lib/actions/x_restlet_v1_Catalog_Guests_Register.js",
+            "title": "x_restlet_v1_Catalog_Guests_Register",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/x_restlet_v1_Catalog_Guests_Register.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "post_v1_Catalog_Guests_SendOtp": {
+            "main": "./lib/actions/post_v1_Catalog_Guests_SendOtp.js",
+            "title": "/v1/Catalog/Guests/SendOtp",
+            "description": "Create OTP for a guest account verification\n\nExample Request : \n\n```\n{\n  \"Email\": \"string\",\n  \"Phone\": {\n    \"CountryId\": 0,\n    \"Number\": \"string\",\n    \"DisplayNumber\": \"string\"\n  },\n  \"CenterId\": \"string\"\n}\n```",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/post_v1_Catalog_Guests_SendOtp.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "x_restlet_v1_Catalog_Guests_SendOtp": {
+            "main": "./lib/actions/x_restlet_v1_Catalog_Guests_SendOtp.js",
+            "title": "x_restlet_v1_Catalog_Guests_SendOtp",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/x_restlet_v1_Catalog_Guests_SendOtp.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "get_v1_Catalog_Guests_UpcomingAppointments": {
+            "main": "./lib/actions/get_v1_Catalog_Guests_UpcomingAppointments.js",
+            "title": "/v1/Catalog/Guests/UpcommingAppointments",
+            "description": "To get the list of future bookings for the logged in guest",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/get_v1_Catalog_Guests_UpcomingAppointments.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "x_restlet_v1_Catalog_Guests_UpcomingAppointments": {
+            "main": "./lib/actions/x_restlet_v1_Catalog_Guests_UpcomingAppointments.js",
+            "title": "x_restlet_v1_Catalog_Guests_UpcomingAppointments",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/x_restlet_v1_Catalog_Guests_UpcomingAppointments.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "post_v1_Catalog_Guests_Update": {
+            "main": "./lib/actions/post_v1_Catalog_Guests_Update.js",
+            "title": "/v1/Catalog/Guests/Update",
+            "description": "Creates a new guest user account by providing an email address or through a Facebook sign-up.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/post_v1_Catalog_Guests_Update.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "x_restlet_v1_Catalog_Guests_Update": {
+            "main": "./lib/actions/x_restlet_v1_Catalog_Guests_Update.js",
+            "title": "x_restlet_v1_Catalog_Guests_Update",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/x_restlet_v1_Catalog_Guests_Update.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "post_v1_Catalog_Guests_VerifyOtp": {
+            "main": "./lib/actions/post_v1_Catalog_Guests_VerifyOtp.js",
+            "title": "/v1/Catalog/Guests/VerifyOtp",
+            "description": "Verify a guest account based on the generated OTP\n\nExample Request : \n\n```\n{\n  \"VerificationId\": \"string\",\n  \"OTP\": \"string\",\n  \"CenterId\": \"string\"\n}\n```",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/post_v1_Catalog_Guests_VerifyOtp.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "x_restlet_v1_Catalog_Guests_VerifyOtp": {
+            "main": "./lib/actions/x_restlet_v1_Catalog_Guests_VerifyOtp.js",
+            "title": "x_restlet_v1_Catalog_Guests_VerifyOtp",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/x_restlet_v1_Catalog_Guests_VerifyOtp.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "post_v1_Catalog_Invoices_ApplyCampaign": {
+            "main": "./lib/actions/post_v1_Catalog_Invoices_ApplyCampaign.js",
+            "title": "/v1/Catalog/Invoices/ApplyCampaign",
+            "description": "Apply a Promo or Campaign given a Campaign Code",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/post_v1_Catalog_Invoices_ApplyCampaign.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "x_restlet_v1_Catalog_Invoices_ApplyCampaign": {
+            "main": "./lib/actions/x_restlet_v1_Catalog_Invoices_ApplyCampaign.js",
+            "title": "x_restlet_v1_Catalog_Invoices_ApplyCampaign",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/x_restlet_v1_Catalog_Invoices_ApplyCampaign.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "get_v1_Catalog_Invoices__InvoiceId_": {
+            "main": "./lib/actions/get_v1_Catalog_Invoices__InvoiceId_.js",
+            "title": "/v1/Catalog/Invoices/{InvoiceId}",
+            "description": "Returns the requested invoice details. {InvoiceId} is a Unique Identifier and is mandatory.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/get_v1_Catalog_Invoices__InvoiceId_.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "x_restlet_v1_Catalog_Invoices__InvoiceId_": {
+            "main": "./lib/actions/x_restlet_v1_Catalog_Invoices__InvoiceId_.js",
+            "title": "x_restlet_v1_Catalog_Invoices__InvoiceId_",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/x_restlet_v1_Catalog_Invoices__InvoiceId_.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "get_v1_Catalog_Organization": {
+            "main": "./lib/actions/get_v1_Catalog_Organization.js",
+            "title": "/v1/Catalog/Organization",
+            "description": "Gets Details of the Organization",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/get_v1_Catalog_Organization.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "x_restlet_v1_Catalog_Organization": {
+            "main": "./lib/actions/x_restlet_v1_Catalog_Organization.js",
+            "title": "x_restlet_v1_Catalog_Organization",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/x_restlet_v1_Catalog_Organization.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "get_v1_Catalog_Organization_Label": {
+            "main": "./lib/actions/get_v1_Catalog_Organization_Label.js",
+            "title": "/v1/Catalog/Organization/Label",
+            "description": "Gets Labels of the Organization",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/get_v1_Catalog_Organization_Label.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "x_restlet_v1_Catalog_Organization_Label": {
+            "main": "./lib/actions/x_restlet_v1_Catalog_Organization_Label.js",
+            "title": "x_restlet_v1_Catalog_Organization_Label",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/x_restlet_v1_Catalog_Organization_Label.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "get_v1_Catalog_Services": {
+            "main": "./lib/actions/get_v1_Catalog_Services.js",
+            "title": "/v1/Catalog/Services",
+            "description": "Gets the list of all the services available in a specific center.\nIf a service category is requested along, the services in that category are returned.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/get_v1_Catalog_Services.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "x_restlet_v1_Catalog_Services": {
+            "main": "./lib/actions/x_restlet_v1_Catalog_Services.js",
+            "title": "x_restlet_v1_Catalog_Services",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/x_restlet_v1_Catalog_Services.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "get_v1_Catalog_Services_Categories": {
+            "main": "./lib/actions/get_v1_Catalog_Services_Categories.js",
+            "title": "/v1/Catalog/Services/Categories",
+            "description": "Gets the list of service categories that are used for grouping services into different areas such as hair or skin.\nYou can request categories under a particular center or a particular parent category",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/get_v1_Catalog_Services_Categories.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "x_restlet_v1_Catalog_Services_Categories": {
+            "main": "./lib/actions/x_restlet_v1_Catalog_Services_Categories.js",
+            "title": "x_restlet_v1_Catalog_Services_Categories",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/x_restlet_v1_Catalog_Services_Categories.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "get_v1_Catalog_Services__ServiceId_": {
+            "main": "./lib/actions/get_v1_Catalog_Services__ServiceId_.js",
+            "title": "/v1/Catalog/Services/{ServiceId}",
+            "description": "Gets detailed information about a particular service. {ServiceId} is a Unique Identifer of a service.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/get_v1_Catalog_Services__ServiceId_.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "x_restlet_v1_Catalog_Services__ServiceId_": {
+            "main": "./lib/actions/x_restlet_v1_Catalog_Services__ServiceId_.js",
+            "title": "x_restlet_v1_Catalog_Services__ServiceId_",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/x_restlet_v1_Catalog_Services__ServiceId_.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "get_v1_Catalog_Therapists": {
+            "main": "./lib/actions/get_v1_Catalog_Therapists.js",
+            "title": "/v1/Catalog/therapists",
+            "description": "Gets the available therapists for a specified time, service and center",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/get_v1_Catalog_Therapists.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "x_restlet_v1_Catalog_Therapists": {
+            "main": "./lib/actions/x_restlet_v1_Catalog_Therapists.js",
+            "title": "x_restlet_v1_Catalog_Therapists",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/x_restlet_v1_Catalog_Therapists.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "get_v1_Collections_Center__CenterId_": {
+            "main": "./lib/actions/get_v1_Collections_Center__CenterId_.js",
+            "title": "Gets Collection details of a center.",
+            "description": "\n\n",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/get_v1_Collections_Center__CenterId_.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "x_restlet_v1_Collections_Center__CenterId_": {
+            "main": "./lib/actions/x_restlet_v1_Collections_Center__CenterId_.js",
+            "title": "x_restlet_v1_Collections_Center__CenterId_",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/x_restlet_v1_Collections_Center__CenterId_.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "get_v1_Collections_OnlineTransactions__CenterId_": {
+            "main": "./lib/actions/get_v1_Collections_OnlineTransactions__CenterId_.js",
+            "title": "Gets Online Transaction details of a center.",
+            "description": "Below is the description of the enums used.\n\nTransactionType - enum\n\n| enum | value | \n| -------- | -------- | \n| All     | 0     | \n| Authorize     | 1     | \n| Refund     | 2     | \n| Reversal     | 3     | \n| Sale     | 4     | \n| Voided |  5  |\n\nTransactionStatus - enum\n\n| feild | value | \n| -------- | -------- |\n| All     | 0     | \n| CCCompleteNotYetSubmitted     | 1     | \n| Error     | 2     | \n| Failed     | 3     | \n| Originated     | 4     | \n| Pending     | 5     | \n| Queued     | 6     | \n| Returned     | 7     | \n| Settled     | 8     | \n| Success     | 9     | \n| Voided     | 10     | \n\nView - enum\n\n| feild | value | \n| -------- | -------- |\n| Default     | 1     | \n| Deposit     | 2     | \n\n",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/get_v1_Collections_OnlineTransactions__CenterId_.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "x_restlet_v1_Collections_OnlineTransactions__CenterId_": {
+            "main": "./lib/actions/x_restlet_v1_Collections_OnlineTransactions__CenterId_.js",
+            "title": "x_restlet_v1_Collections_OnlineTransactions__CenterId_",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/x_restlet_v1_Collections_OnlineTransactions__CenterId_.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "get_v1_Collections_PaymentGroups": {
+            "main": "./lib/actions/get_v1_Collections_PaymentGroups.js",
+            "title": "Gets Collection details of paymentgroups of a center",
+            "description": "\n\n",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/get_v1_Collections_PaymentGroups.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "x_restlet_v1_Collections_PaymentGroups": {
+            "main": "./lib/actions/x_restlet_v1_Collections_PaymentGroups.js",
+            "title": "x_restlet_v1_Collections_PaymentGroups",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/x_restlet_v1_Collections_PaymentGroups.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "post_v1_Collections_PaymentStatus": {
+            "main": "./lib/actions/post_v1_Collections_PaymentStatus.js",
+            "title": "sets payment status.",
+            "description": "below is the example for request body\n\n```\n{\n  \"CenterId\": \"7f7ace7c-574a-4e7f-922a-388a9f59f2b5\",\n  \"data\": [\n    {\n      \"PaymentID\": 1,\n      \"Status\": \"sample string 2\",\n      \"Amount\": 3.0\n    },\n    {\n      \"PaymentID\": 1,\n      \"Status\": \"sample string 2\",\n      \"Amount\": 3.0\n    }\n  ]\n}\n```\n\n",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/post_v1_Collections_PaymentStatus.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "x_restlet_v1_Collections_PaymentStatus": {
+            "main": "./lib/actions/x_restlet_v1_Collections_PaymentStatus.js",
+            "title": "x_restlet_v1_Collections_PaymentStatus",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/x_restlet_v1_Collections_PaymentStatus.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "post_v1_Invoices_Add": {
+            "main": "./lib/actions/post_v1_Invoices_Add.js",
+            "title": "Add an Invoice",
+            "description": "Add an Invoice. Add Services, Memberships, Packages, GiftCards through creating an invoice.\n\nSample Request ( For Buying a membership):\n\n{\n  \"Invoice\": {\n    \"InvoiceMemberships\": [\n      {\n        \"AppointmentMembership\": {\n          \"Membership\": {\n            \"VersionId\": \"2431EBCB-097B-48AD-BE20-DAB1E979C145\"\n          },\n          \"Employee\": {\n            \"Id\": \"6372bb51-e507-4431-b0cc-6be2143bb99a\"\n          },\n          \"Quantity\": 1\n        }\n      }\n    ]\n  },\n  \"CenterId\": \"9a895b3c-1994-42c0-bc61-efda4a6e2828\",\n  \"GuestId\": \"51c5d84b-a4db-4cd6-bb3e-0d410642da66\",\n  \"IsForced\": true,\n  \"Notes\": \"text\"\n}",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/post_v1_Invoices_Add.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "x_restlet_v1_Invoices_Add": {
+            "main": "./lib/actions/x_restlet_v1_Invoices_Add.js",
+            "title": "x_restlet_v1_Invoices_Add",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/x_restlet_v1_Invoices_Add.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "post_v1_Invoices_Checkout": {
+            "main": "./lib/actions/post_v1_Invoices_Checkout.js",
+            "title": "Check out Invoice",
+            "description": "Check out Invoice\n\nSample Request:\n\n{\n  \"InvoiceId\": \"22b0d290-1284-4075-9439-9855bd18da27\",\n  \"AppointmentGroupId\": \"aa979551-8f99-4aad-a833-f53096485bac\"\n}",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/post_v1_Invoices_Checkout.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "x_restlet_v1_Invoices_Checkout": {
+            "main": "./lib/actions/x_restlet_v1_Invoices_Checkout.js",
+            "title": "x_restlet_v1_Invoices_Checkout",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/x_restlet_v1_Invoices_Checkout.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "get_v1_Invoices__InvoiceId_": {
+            "main": "./lib/actions/get_v1_Invoices__InvoiceId_.js",
+            "title": "Get Invoice Details via Invoice Id",
+            "description": "Get Invoice Details via Invoice Id",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/get_v1_Invoices__InvoiceId_.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "x_restlet_v1_Invoices__InvoiceId_": {
+            "main": "./lib/actions/x_restlet_v1_Invoices__InvoiceId_.js",
+            "title": "x_restlet_v1_Invoices__InvoiceId_",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/x_restlet_v1_Invoices__InvoiceId_.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "get_v1_Revenues_InvoiceItem__CenterId_": {
+            "main": "./lib/actions/get_v1_Revenues_InvoiceItem__CenterId_.js",
+            "title": "Gets Revenue details for a center.",
+            "description": "\n| ItemType | value |\n| -------- | -------- |\n| Service     | 0     | \n| Product     | 2     | \n| Membership     | 3     | \n| Package     | 4     | \n| Day Package     | 5     | \n| Pre-Paid/GiftCard     | 6     | ",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/get_v1_Revenues_InvoiceItem__CenterId_.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "x_restlet_v1_Revenues_InvoiceItem__CenterId_": {
+            "main": "./lib/actions/x_restlet_v1_Revenues_InvoiceItem__CenterId_.js",
+            "title": "x_restlet_v1_Revenues_InvoiceItem__CenterId_",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/x_restlet_v1_Revenues_InvoiceItem__CenterId_.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "get_v1_appointments": {
+            "main": "./lib/actions/get_v1_appointments.js",
+            "title": "Get a list of appointments",
+            "description": "API returns a list of appointments based on multiple criterias provided by the caller. ",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/get_v1_appointments.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "AppointmentsApi_ConfirmReservation": {
+            "main": "./lib/actions/AppointmentsApi_ConfirmReservation.js",
+            "title": "Creates a confirmed Appointment",
+            "description": "API is used to create a confirmed appointment. It is expected that following information is sent as the request body. \n\n```\n{\"CenterId\":\"adb0c9cd-5357-440d-8ee4-4557c6241271\",\"ReservationId\":\"ab2549c1-aea3-476e-b16b-d856f4363b03\"}\n```\n\nSecurity:\n`API requires a security token of user with write permission on Appointments.`",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                },
+                "body_content_type": {
+                    "viewClass": "SelectView",
+                    "label": "Body Content-Type",
+                    "required": true,
+                    "prompt": "Choose a body Content-Type.",
+                    "model": {
+                        "application/json": "application/json",
+                        "text/json": "text/json",
+                        "application/xml": "application/xml",
+                        "text/xml": "text/xml",
+                        "application/x-www-form-urlencoded": "application/x-www-form-urlencoded",
+                        "text/html": "text/html"
+                    }
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/AppointmentsApi_ConfirmReservation.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "put_v1_appointments": {
+            "main": "./lib/actions/put_v1_appointments.js",
+            "title": "Update the appointment",
+            "description": "API is used to update the existing appointment.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/put_v1_appointments.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "x_restlet_v1_appointments": {
+            "main": "./lib/actions/x_restlet_v1_appointments.js",
+            "title": "x_restlet_v1_appointments",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/x_restlet_v1_appointments.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "post_v1_appointments_AddFeedback": {
+            "main": "./lib/actions/post_v1_appointments_AddFeedback.js",
+            "title": "sets the appointment FeedBack",
+            "description": "\n\n\n\n\n\n\n\n\n\n",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/post_v1_appointments_AddFeedback.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "x_restlet_v1_appointments_AddFeedback": {
+            "main": "./lib/actions/x_restlet_v1_appointments_AddFeedback.js",
+            "title": "x_restlet_v1_appointments_AddFeedback",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/x_restlet_v1_appointments_AddFeedback.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "post_v1_appointments_AddNotes": {
+            "main": "./lib/actions/post_v1_appointments_AddNotes.js",
+            "title": "sets the appointment notes",
+            "description": "\n\n\n\n\n\n\n\n\n\n",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/post_v1_appointments_AddNotes.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "x_restlet_v1_appointments_AddNotes": {
+            "main": "./lib/actions/x_restlet_v1_appointments_AddNotes.js",
+            "title": "x_restlet_v1_appointments_AddNotes",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/x_restlet_v1_appointments_AddNotes.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "get_v1_appointments_Admin_Sessions": {
+            "main": "./lib/actions/get_v1_appointments_Admin_Sessions.js",
+            "title": "Gets the guests class registrations. This API should be invoked by an employee to see a guest's registrations",
+            "description": "\n\n\n\n\n\n\n\n\n\n",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/get_v1_appointments_Admin_Sessions.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "post_v1_appointments_Admin_Sessions": {
+            "main": "./lib/actions/post_v1_appointments_Admin_Sessions.js",
+            "title": "To enroll/register a guest for a session by Admin",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/post_v1_appointments_Admin_Sessions.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "x_restlet_v1_appointments_Admin_Sessions": {
+            "main": "./lib/actions/x_restlet_v1_appointments_Admin_Sessions.js",
+            "title": "x_restlet_v1_appointments_Admin_Sessions",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/x_restlet_v1_appointments_Admin_Sessions.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "post_v1_appointments_ConfirmReservation": {
+            "main": "./lib/actions/post_v1_appointments_ConfirmReservation.js",
+            "title": "To Confirm Reservation",
+            "description": "Example Request : \n```\n{\n  \"CenterId\": \"string\",\n  \"ReservationId\": \"string\",\n  \"BookingSource\": 0,\n  \"HostId\": \"string\",\n  \"SlotBookings\": [\n    {\n      \"GuestId\": \"string\",\n      \"AppointmentGroupId\": \"string\",\n      \"Services\": [\n        {\n          \"AppointmentId\": \"string\",\n          \"InvoiceItemId\": \"string\",\n          \"CartItemId\": \"string\",\n          \"AppointmentSegmentId\": \"string\",\n          \"PackageId\": \"string\",\n          \"Package\": {\n            \"Id\": \"string\",\n            \"Name\": \"string\",\n            \"Description\": \"string\",\n            \"Code\": \"string\",\n            \"Type\": 1,\n            \"Price\": {\n              \"CurrencyId\": 0,\n              \"Sales\": 0,\n              \"Tax\": 0,\n              \"Final\": 0,\n              \"Final1\": 0,\n              \"Discount\": 0,\n              \"Tip\": 0,\n              \"SSG\": 0,\n              \"RoundingCorrection\": 0\n            },\n            \"Services\": [\n              {\n                \"Id\": \"string\",\n                \"Name\": \"string\",\n                \"Price\": {\n                  \"CurrencyId\": 0,\n                  \"Sales\": 0,\n                  \"Tax\": 0,\n                  \"Final\": 0,\n                  \"Final1\": 0,\n                  \"Discount\": 0,\n                  \"Tip\": 0,\n                  \"SSG\": 0,\n                  \"RoundingCorrection\": 0\n                },\n                \"Duration\": 0,\n                \"CategoryId\": \"string\",\n                \"IsAddOn\": true,\n                \"HasAddOns\": true,\n                \"AddOnToServiceId\": \"string\",\n                \"CategoryName\": \"string\",\n                \"AddOns\": [\n                  {}\n                ],\n                \"IsVariant\": true,\n                \"HasVariant\": true,\n                \"ParentServiceId\": \"string\",\n                \"CartItemId\": \"string\"\n              }\n            ],\n            \"Items\": [\n              {\n                \"Type\": 1,\n                \"Id\": \"string\",\n                \"Name\": \"string\",\n                \"Quantity\": 0,\n                \"Order\": 0,\n                \"Service\": {\n                  \"Id\": \"string\",\n                  \"Name\": \"string\",\n                  \"Price\": {\n                    \"CurrencyId\": 0,\n                    \"Sales\": 0,\n                    \"Tax\": 0,\n                    \"Final\": 0,\n                    \"Final1\": 0,\n                    \"Discount\": 0,\n                    \"Tip\": 0,\n                    \"SSG\": 0,\n                    \"RoundingCorrection\": 0\n                  },\n                  \"Duration\": 0,\n                  \"CategoryId\": \"string\",\n                  \"IsAddOn\": true,\n                  \"HasAddOns\": true,\n                  \"AddOnToServiceId\": \"string\",\n                  \"CategoryName\": \"string\",\n                  \"AddOns\": [\n                    {}\n                  ],\n                  \"IsVariant\": true,\n                  \"HasVariant\": true,\n                  \"ParentServiceId\": \"string\",\n                  \"CartItemId\": \"string\"\n                }\n              }\n            ]\n          },\n          \"Service\": {\n            \"Id\": \"string\",\n            \"Name\": \"string\",\n            \"Price\": {\n              \"CurrencyId\": 0,\n              \"Sales\": 0,\n              \"Tax\": 0,\n              \"Final\": 0,\n              \"Final1\": 0,\n              \"Discount\": 0,\n              \"Tip\": 0,\n              \"SSG\": 0,\n              \"RoundingCorrection\": 0\n            },\n            \"Duration\": 0,\n            \"CategoryId\": \"string\",\n            \"IsAddOn\": true,\n            \"HasAddOns\": true,\n            \"AddOnToServiceId\": \"string\",\n            \"CategoryName\": \"string\",\n            \"AddOns\": [\n              {}\n            ],\n            \"IsVariant\": true,\n            \"HasVariant\": true,\n            \"ParentServiceId\": \"string\",\n            \"CartItemId\": \"string\"\n          },\n          \"RequestedTherapistGender\": 0,\n          \"StartTime\": \"2017-09-04T04:51:31.647Z\",\n          \"EndTime\": \"2017-09-04T04:51:31.647Z\",\n          \"StartTimeInCenter\": \"2017-09-04T04:51:31.647Z\",\n          \"EndTimeInCenter\": \"2017-09-04T04:51:31.647Z\",\n          \"Room\": {\n            \"Id\": \"string\",\n            \"Name\": \"string\"\n          },\n          \"Lock\": true,\n          \"Equipment\": {\n            \"Id\": \"string\",\n            \"Name\": \"string\"\n          },\n          \"Status\": 0,\n          \"RequestedTherapist\": {\n            \"Id\": \"string\",\n            \"ShortName\": \"string\",\n            \"NickName\": \"string\",\n            \"FullName\": \"string\",\n            \"Email\": \"string\",\n            \"PhoneNumber\": \"string\",\n            \"MobilePhoneModel\": {\n              \"CountryId\": 0,\n              \"Number\": \"string\",\n              \"DisplayNumber\": \"string\"\n            },\n            \"Gender\": 0,\n            \"FirstName\": \"string\",\n            \"LastName\": \"string\",\n            \"IsAvailable\": true,\n            \"VanityImageUrl\": \"string\",\n            \"ScalingFactor\": 0,\n            \"ScaledPrice\": 0,\n            \"ServiceTime\": 0,\n            \"DisplayName\": \"string\"\n          },\n          \"Quantity\": 0,\n          \"Price\": {\n            \"CurrencyId\": 0,\n            \"Sales\": 0,\n            \"Tax\": 0,\n            \"Final\": 0,\n            \"Final1\": 0,\n            \"Discount\": 0,\n            \"Tip\": 0,\n            \"SSG\": 0,\n            \"RoundingCorrection\": 0\n          },\n          \"SCD\": \"string\",\n          \"ActualStartTime\": \"2017-09-04T04:51:31.647Z\",\n          \"CompletedTime\": \"2017-09-04T04:51:31.647Z\",\n          \"Progress\": 0,\n          \"ParentAppointmentId\": \"string\",\n          \"ServiceCustomData\": {\n            \"Permission\": {\n              \"CanView\": true,\n              \"CanEdit\": true\n            }\n          },\n          \"ItemActions\": \"string\",\n          \"EquivalenceFactor\": 0,\n          \"EquivalentName\": \"string\",\n          \"IsMembershipApplied\": true,\n          \"IsAddOn\": true,\n          \"AddonAppointmentId\": \"string\",\n          \"IsPackageApplied\": true,\n          \"IsDiscountApplied\": true,\n          \"CanModifyTherapist\": true\n        }\n      ],\n      \"TherapistId\": \"string\",\n      \"RoomId\": \"string\",\n      \"Quantity\": 0,\n      \"BookingNotes\": \"string\",\n      \"Price\": {\n        \"CurrencyId\": 0,\n        \"Sales\": 0,\n        \"Tax\": 0,\n        \"Final\": 0,\n        \"Final1\": 0,\n        \"Discount\": 0,\n        \"Tip\": 0,\n        \"SSG\": 0,\n        \"RoundingCorrection\": 0\n      },\n      \"VirtualGuest\": {\n        \"FirstName\": \"string\",\n        \"LastName\": \"string\",\n        \"Email\": \"string\",\n        \"Mobile\": {\n          \"CountryId\": 0,\n          \"Number\": \"string\",\n          \"DisplayNumber\": \"string\"\n        },\n        \"Gender\": 0\n      },\n      \"CartItemIds\": [\n        \"string\"\n      ]\n    }\n  ]\n}\n```",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/post_v1_appointments_ConfirmReservation.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "x_restlet_v1_appointments_ConfirmReservation": {
+            "main": "./lib/actions/x_restlet_v1_appointments_ConfirmReservation.js",
+            "title": "x_restlet_v1_appointments_ConfirmReservation",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/x_restlet_v1_appointments_ConfirmReservation.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "post_v1_appointments_CustomData": {
+            "main": "./lib/actions/post_v1_appointments_CustomData.js",
+            "title": "sets the appointment Custom Data",
+            "description": "\n\n\n\n\n\n\n\n\n\n",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/post_v1_appointments_CustomData.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "x_restlet_v1_appointments_CustomData": {
+            "main": "./lib/actions/x_restlet_v1_appointments_CustomData.js",
+            "title": "x_restlet_v1_appointments_CustomData",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/x_restlet_v1_appointments_CustomData.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "get_v1_appointments_Month__Year___Month_": {
+            "main": "./lib/actions/get_v1_appointments_Month__Year___Month_.js",
+            "title": "Gets monthly dates with bool value if the appointments are present for each date",
+            "description": "\n\n\n\n\n\n\n\n\n\n",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/get_v1_appointments_Month__Year___Month_.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "x_restlet_v1_appointments_Month__Year___Month_": {
+            "main": "./lib/actions/x_restlet_v1_appointments_Month__Year___Month_.js",
+            "title": "x_restlet_v1_appointments_Month__Year___Month_",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/x_restlet_v1_appointments_Month__Year___Month_.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "post_v1_appointments_add": {
+            "main": "./lib/actions/post_v1_appointments_add.js",
+            "title": "To Update Appoitnment Group Details",
+            "description": "This API can be called to add an appointment. \n\nParameters\n\n\n| Parameter  | Type | Description |\n| -------- | -------- | -------- |\n| AppointmentGroupId    | GUID     | Unique identifier for the appointment    ||\n| Comments    | String     | Comments for No Show    |\n\nSecurity:  Permissions required to call this API. \n\n\n\n\n\n\n\n\n",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/post_v1_appointments_add.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "x_restlet_v1_appointments_add": {
+            "main": "./lib/actions/x_restlet_v1_appointments_add.js",
+            "title": "x_restlet_v1_appointments_add",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/x_restlet_v1_appointments_add.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "put_v1_appointments_alternatives": {
+            "main": "./lib/actions/put_v1_appointments_alternatives.js",
+            "title": "Update the appointment for the alternative",
+            "description": "Update the appointment for the alternative",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/put_v1_appointments_alternatives.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "x_restlet_v1_appointments_alternatives": {
+            "main": "./lib/actions/x_restlet_v1_appointments_alternatives.js",
+            "title": "x_restlet_v1_appointments_alternatives",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/x_restlet_v1_appointments_alternatives.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "AppointmentsApi_GetAvailableSlotsV2": {
+            "main": "./lib/actions/AppointmentsApi_GetAvailableSlotsV2.js",
+            "title": "Get list of available Appointments",
+            "description": "The API returns a list of available appointments. API expects that following information be passed in the Request body. \n\n```\n{\"CenterId\":\"adb0c9cd-5357-440d-8ee4-4557c6241271\",\"CenterDate\":\"2017-05-08\",\"SlotBookings\":[{\"Services\":[{\"Service\":{\"Id\":\"8b15f00d-0594-4975-8d27-c88a3c64bfab\"}}]}]}\n```\n\n\nSecurity:\n`API requires a security token for a user with read permission on Appointments.`",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/AppointmentsApi_GetAvailableSlotsV2.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "x_restlet_v1_appointments_availability": {
+            "main": "./lib/actions/x_restlet_v1_appointments_availability.js",
+            "title": "x_restlet_v1_appointments_availability",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/x_restlet_v1_appointments_availability.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "post_v1_appointments_availabletimes": {
+            "main": "./lib/actions/post_v1_appointments_availabletimes.js",
+            "title": "To get Available Time slots for the services and therapists",
+            "description": "\n\n\n\n\n\n\n\n\n\n",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/post_v1_appointments_availabletimes.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "x_restlet_v1_appointments_availabletimes": {
+            "main": "./lib/actions/x_restlet_v1_appointments_availabletimes.js",
+            "title": "x_restlet_v1_appointments_availabletimes",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/x_restlet_v1_appointments_availabletimes.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "post_v1_appointments_bulkbookingGuestdetails": {
+            "main": "./lib/actions/post_v1_appointments_bulkbookingGuestdetails.js",
+            "title": "Gets guest details for bulk booking",
+            "description": "\n\n\n\n\n\n\n\n\n\n",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/post_v1_appointments_bulkbookingGuestdetails.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "x_restlet_v1_appointments_bulkbookingGuestdetails": {
+            "main": "./lib/actions/x_restlet_v1_appointments_bulkbookingGuestdetails.js",
+            "title": "x_restlet_v1_appointments_bulkbookingGuestdetails",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/x_restlet_v1_appointments_bulkbookingGuestdetails.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "post_v1_appointments_bulkbookingavailabletimes": {
+            "main": "./lib/actions/post_v1_appointments_bulkbookingavailabletimes.js",
+            "title": "to get bulk booking available time slots",
+            "description": "\n\n\n\n\n\n\n\n\n\n",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/post_v1_appointments_bulkbookingavailabletimes.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "x_restlet_v1_appointments_bulkbookingavailabletimes": {
+            "main": "./lib/actions/x_restlet_v1_appointments_bulkbookingavailabletimes.js",
+            "title": "x_restlet_v1_appointments_bulkbookingavailabletimes",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/x_restlet_v1_appointments_bulkbookingavailabletimes.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "post_v1_appointments_bulkbookingconfirmreservation": {
+            "main": "./lib/actions/post_v1_appointments_bulkbookingconfirmreservation.js",
+            "title": "to Confirm reservation for bulkbooking",
+            "description": "\n\n\n\n\n\n\n\n\n\n",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/post_v1_appointments_bulkbookingconfirmreservation.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "x_restlet_v1_appointments_bulkbookingconfirmreservation": {
+            "main": "./lib/actions/x_restlet_v1_appointments_bulkbookingconfirmreservation.js",
+            "title": "x_restlet_v1_appointments_bulkbookingconfirmreservation",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/x_restlet_v1_appointments_bulkbookingconfirmreservation.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "post_v1_appointments_bulkbookingreserveslots": {
+            "main": "./lib/actions/post_v1_appointments_bulkbookingreserveslots.js",
+            "title": "to reserve slots for bulkbooking",
+            "description": "\n\n\n\n\n\n\n\n\n\n",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/post_v1_appointments_bulkbookingreserveslots.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "x_restlet_v1_appointments_bulkbookingreserveslots": {
+            "main": "./lib/actions/x_restlet_v1_appointments_bulkbookingreserveslots.js",
+            "title": "x_restlet_v1_appointments_bulkbookingreserveslots",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/x_restlet_v1_appointments_bulkbookingreserveslots.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "post_v1_appointments_cancel": {
+            "main": "./lib/actions/post_v1_appointments_cancel.js",
+            "title": "Cancel an appointment",
+            "description": "This API can be  called to cancel an existing appointment. \n\nParameters\n\n\n| Parameter  | Type | Description |\n| -------- | -------- | -------- |\n| AppointmentGroupId    | GUID     | Unique identifier for the appointment    |\n| ReasonId    | INT     |  Reason for cancellation of appointment    |\n| Comments    | String     | Comments for cancellation    |\n\nSecurity:  Permissions required to call this API. \n\n\n\n\n\n\n\n\n",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/post_v1_appointments_cancel.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "x_restlet_v1_appointments_cancel": {
+            "main": "./lib/actions/x_restlet_v1_appointments_cancel.js",
+            "title": "x_restlet_v1_appointments_cancel",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/x_restlet_v1_appointments_cancel.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "post_v1_appointments_noshow": {
+            "main": "./lib/actions/post_v1_appointments_noshow.js",
+            "title": "To Mark No Show for an appointment",
+            "description": "This API can be  called to Mark No Show for an existing appointment. \n\nParameters\n\n\n| Parameter  | Type | Description |\n| -------- | -------- | -------- |\n| AppointmentGroupId    | GUID     | Unique identifier for the appointment    ||\n| Comments    | String     | Comments for No Show    |\n\nSecurity:  Permissions required to call this API. \n\n\n\n\n\n\n\n\n",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/post_v1_appointments_noshow.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "x_restlet_v1_appointments_noshow": {
+            "main": "./lib/actions/x_restlet_v1_appointments_noshow.js",
+            "title": "x_restlet_v1_appointments_noshow",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/x_restlet_v1_appointments_noshow.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "post_v1_appointments_reebook": {
+            "main": "./lib/actions/post_v1_appointments_reebook.js",
+            "title": "rebook an appointment",
+            "description": "This API can be  called to cancel an existing appointment. \n\nParameters\n\n\n| Parameter  | Type | Description |\n| -------- | -------- | -------- |\n| AppointmentGroupId    | GUID     | Unique identifier for the appointment    |\n| ReasonId    | INT     |  Reason for cancellation of appointment    |\n| Comments    | String     | Comments for cancellation    |\n\nSecurity:  Permissions required to call this API. \n\n\n\n\n\n\n\n\n",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/post_v1_appointments_reebook.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "x_restlet_v1_appointments_reebook": {
+            "main": "./lib/actions/x_restlet_v1_appointments_reebook.js",
+            "title": "x_restlet_v1_appointments_reebook",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/x_restlet_v1_appointments_reebook.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "post_v1_appointments_reserveslots": {
+            "main": "./lib/actions/post_v1_appointments_reserveslots.js",
+            "title": "To reserve slots",
+            "description": "\n\n\n\n\n\n\n\n\n\n",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/post_v1_appointments_reserveslots.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "x_restlet_v1_appointments_reserveslots": {
+            "main": "./lib/actions/x_restlet_v1_appointments_reserveslots.js",
+            "title": "x_restlet_v1_appointments_reserveslots",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/x_restlet_v1_appointments_reserveslots.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "post_v1_appointments_setstatus": {
+            "main": "./lib/actions/post_v1_appointments_setstatus.js",
+            "title": "sets the status of the Appointment",
+            "description": "Below are the respective statuses for the value of the status tag in the input.\n\n| status  | value  | \n| -------- | -------- | \n| New | 0 |\n| Checkin     | 2     |\n| Undo Checkin     | 0     |\n| Confirm     | 4     |\n\n",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/post_v1_appointments_setstatus.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "x_restlet_v1_appointments_setstatus": {
+            "main": "./lib/actions/x_restlet_v1_appointments_setstatus.js",
+            "title": "x_restlet_v1_appointments_setstatus",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/x_restlet_v1_appointments_setstatus.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "AppointmentsApi_ReserveSlots": {
+            "main": "./lib/actions/AppointmentsApi_ReserveSlots.js",
+            "title": "Create an Appointment Slot",
+            "description": "The API is used to reserve a temporary Appointment slot. API expects following information be sent in the Request body. \n\n```\n{\"CenterId\":\"adb0c9cd-5357-440d-8ee4-4557c6241271\",\"CenterTime\":\"2017-05-05 12:00:00\",\"SlotBookings\":[{\"GuestId\":\"2e24d650-d7b4-473e-9bf3-b835c882cf35\",\"Services\":[{\"Service\":{\"Id\":\"8b15f00d-0594-4975-8d27-c88a3c64bfab\"}}],\"StartTime\":\"2017-05-05 12:00:00\"}]}\n```\n\nSecurity:\n`API requires a security token for user with write permission on  Appointments.`",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                },
+                "body_content_type": {
+                    "viewClass": "SelectView",
+                    "label": "Body Content-Type",
+                    "required": true,
+                    "prompt": "Choose a body Content-Type.",
+                    "model": {
+                        "application/json": "application/json",
+                        "text/json": "text/json",
+                        "application/xml": "application/xml",
+                        "text/xml": "text/xml",
+                        "application/x-www-form-urlencoded": "application/x-www-form-urlencoded",
+                        "text/html": "text/html"
+                    }
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/AppointmentsApi_ReserveSlots.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "x_restlet_v1_appointments_slots": {
+            "main": "./lib/actions/x_restlet_v1_appointments_slots.js",
+            "title": "x_restlet_v1_appointments_slots",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/x_restlet_v1_appointments_slots.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "post_v1_appointments_update": {
+            "main": "./lib/actions/post_v1_appointments_update.js",
+            "title": "Update an appointment",
+            "description": "This API can be  called to cancel an existing appointment. \n\nParameters\n\n\n| Parameter  | Type | Description |\n| -------- | -------- | -------- |\n| AppointmentGroupId    | GUID     | Unique identifier for the appointment    |\n| ReasonId    | INT     |  Reason for cancellation of appointment    |\n| Comments    | String     | Comments for cancellation    |\n\nSecurity:  Permissions required to call this API. \n\n\n\n\n\n\n\n\n",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/post_v1_appointments_update.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "x_restlet_v1_appointments_update": {
+            "main": "./lib/actions/x_restlet_v1_appointments_update.js",
+            "title": "x_restlet_v1_appointments_update",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/x_restlet_v1_appointments_update.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "post_v1_appointments_updatebulkbookingGuestdetails": {
+            "main": "./lib/actions/post_v1_appointments_updatebulkbookingGuestdetails.js",
+            "title": "updates guest details for bulk booking",
+            "description": "\n\n\n\n\n\n\n\n\n\n",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/post_v1_appointments_updatebulkbookingGuestdetails.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "x_restlet_v1_appointments_updatebulkbookingGuestdetails": {
+            "main": "./lib/actions/x_restlet_v1_appointments_updatebulkbookingGuestdetails.js",
+            "title": "x_restlet_v1_appointments_updatebulkbookingGuestdetails",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/x_restlet_v1_appointments_updatebulkbookingGuestdetails.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "post_v1_appointments__AppointmentFieldId__CustomDataFile": {
+            "main": "./lib/actions/post_v1_appointments__AppointmentFieldId__CustomDataFile.js",
+            "title": "Uploads service custom data image for a given field. The file name should be of the format [field id].[extension] of image",
+            "description": "\n\n\n\n\n\n\n\n\n\n",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/post_v1_appointments__AppointmentFieldId__CustomDataFile.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "x_restlet_v1_appointments__AppointmentFieldId__CustomDataFile": {
+            "main": "./lib/actions/x_restlet_v1_appointments__AppointmentFieldId__CustomDataFile.js",
+            "title": "x_restlet_v1_appointments__AppointmentFieldId__CustomDataFile",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/x_restlet_v1_appointments__AppointmentFieldId__CustomDataFile.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "get_v1_appointments__AppointmentFieldValue__CustomDataImage": {
+            "main": "./lib/actions/get_v1_appointments__AppointmentFieldValue__CustomDataImage.js",
+            "title": "Uploads service custom data image for a given field. The file name should be of the format [field id].[extension] of image",
+            "description": "\n\n\n\n\n\n\n\n\n\n",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/get_v1_appointments__AppointmentFieldValue__CustomDataImage.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "post_v1_appointments__AppointmentFieldValue__CustomDataImage": {
+            "main": "./lib/actions/post_v1_appointments__AppointmentFieldValue__CustomDataImage.js",
+            "title": "Uploads service custom data image for a given field. The file name should be of the format [field id].[extension] of image",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/post_v1_appointments__AppointmentFieldValue__CustomDataImage.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "x_restlet_v1_appointments__AppointmentFieldValue__CustomDataImage": {
+            "main": "./lib/actions/x_restlet_v1_appointments__AppointmentFieldValue__CustomDataImage.js",
+            "title": "x_restlet_v1_appointments__AppointmentFieldValue__CustomDataImage",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/x_restlet_v1_appointments__AppointmentFieldValue__CustomDataImage.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "post_v1_appointments__AppointmentFieldValue__UploadCustomDataImage": {
+            "main": "./lib/actions/post_v1_appointments__AppointmentFieldValue__UploadCustomDataImage.js",
+            "title": "Uploads service custom data image for a given field. The file name should be of the format [field id].[extension] of image",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/post_v1_appointments__AppointmentFieldValue__UploadCustomDataImage.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "x_restlet_v1_appointments__AppointmentFieldValue__UploadCustomDataImage": {
+            "main": "./lib/actions/x_restlet_v1_appointments__AppointmentFieldValue__UploadCustomDataImage.js",
+            "title": "x_restlet_v1_appointments__AppointmentFieldValue__UploadCustomDataImage",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/x_restlet_v1_appointments__AppointmentFieldValue__UploadCustomDataImage.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "post_v1_appointments__AppointmentGroupId__setprogress": {
+            "main": "./lib/actions/post_v1_appointments__AppointmentGroupId__setprogress.js",
+            "title": "Changes the progress of Appointment",
+            "description": "Below are the respective statuses for the value of the status tag in the input.\n\n| status  | value  | \n| New | 0 |\n| Checkin     | 1     |\n| Undo Checkin     | 2     |\n| Confirm     | 3     |\n\n",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/post_v1_appointments__AppointmentGroupId__setprogress.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "x_restlet_v1_appointments__AppointmentGroupId__setprogress": {
+            "main": "./lib/actions/x_restlet_v1_appointments__AppointmentGroupId__setprogress.js",
+            "title": "x_restlet_v1_appointments__AppointmentGroupId__setprogress",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/x_restlet_v1_appointments__AppointmentGroupId__setprogress.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "get_v1_appointments__AppointmentId__CustomData": {
+            "main": "./lib/actions/get_v1_appointments__AppointmentId__CustomData.js",
+            "title": "Gets the appointment's service custom data",
+            "description": "\n\n\n\n\n\n\n\n\n\n",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/get_v1_appointments__AppointmentId__CustomData.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "x_restlet_v1_appointments__AppointmentId__CustomData": {
+            "main": "./lib/actions/x_restlet_v1_appointments__AppointmentId__CustomData.js",
+            "title": "x_restlet_v1_appointments__AppointmentId__CustomData",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/x_restlet_v1_appointments__AppointmentId__CustomData.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "get_v1_appointments__AppointmentId__CustomData_History": {
+            "main": "./lib/actions/get_v1_appointments__AppointmentId__CustomData_History.js",
+            "title": "Gets the appointment's service custom data History",
+            "description": "\n\n\n\n\n\n\n\n\n\n",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/get_v1_appointments__AppointmentId__CustomData_History.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "x_restlet_v1_appointments__AppointmentId__CustomData_History": {
+            "main": "./lib/actions/x_restlet_v1_appointments__AppointmentId__CustomData_History.js",
+            "title": "x_restlet_v1_appointments__AppointmentId__CustomData_History",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/x_restlet_v1_appointments__AppointmentId__CustomData_History.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "get_v1_appointments__AppointmentId__CustomData__AppointmentFieldId__Annotations": {
+            "main": "./lib/actions/get_v1_appointments__AppointmentId__CustomData__AppointmentFieldId__Annotations.js",
+            "title": "Get the appointment's custom data image annotations",
+            "description": "\n\n\n\n\n\n\n\n\n\n",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/get_v1_appointments__AppointmentId__CustomData__AppointmentFieldId__Annotations.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "x_restlet_v1_appointments__AppointmentId__CustomData__AppointmentFieldId__Annotations": {
+            "main": "./lib/actions/x_restlet_v1_appointments__AppointmentId__CustomData__AppointmentFieldId__Annotations.js",
+            "title": "x_restlet_v1_appointments__AppointmentId__CustomData__AppointmentFieldId__Annotations",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/x_restlet_v1_appointments__AppointmentId__CustomData__AppointmentFieldId__Annotations.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "post_v1_appointments__AppointmentId__SendMail": {
+            "main": "./lib/actions/post_v1_appointments__AppointmentId__SendMail.js",
+            "title": "Sends Custom data mail to the guest",
+            "description": "\n\n\n\n\n\n\n\n\n\n",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/post_v1_appointments__AppointmentId__SendMail.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "x_restlet_v1_appointments__AppointmentId__SendMail": {
+            "main": "./lib/actions/x_restlet_v1_appointments__AppointmentId__SendMail.js",
+            "title": "x_restlet_v1_appointments__AppointmentId__SendMail",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/x_restlet_v1_appointments__AppointmentId__SendMail.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "get_v1_appointments__appointmentgroupid_": {
+            "main": "./lib/actions/get_v1_appointments__appointmentgroupid_.js",
+            "title": "Gets Details of an Appointment for the Appointment Group ID",
+            "description": "This API gets us an appointment group json object, which has the details of the appointment for the particular appointment group id.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/get_v1_appointments__appointmentgroupid_.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "x_restlet_v1_appointments__appointmentgroupid_": {
+            "main": "./lib/actions/x_restlet_v1_appointments__appointmentgroupid_.js",
+            "title": "x_restlet_v1_appointments__appointmentgroupid_",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/x_restlet_v1_appointments__appointmentgroupid_.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "get_v1_appointments__appointmentgroupid__invoice": {
+            "main": "./lib/actions/get_v1_appointments__appointmentgroupid__invoice.js",
+            "title": "Gets invoice Details for a particular appointment group id",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/get_v1_appointments__appointmentgroupid__invoice.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "x_restlet_v1_appointments__appointmentgroupid__invoice": {
+            "main": "./lib/actions/x_restlet_v1_appointments__appointmentgroupid__invoice.js",
+            "title": "x_restlet_v1_appointments__appointmentgroupid__invoice",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/x_restlet_v1_appointments__appointmentgroupid__invoice.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "CentersApi_GetCenters": {
+            "main": "./lib/actions/CentersApi_GetCenters.js",
+            "title": "Get a list of Centers",
+            "description": "API returns a list of Centers that the user is authorized to view. \n\nSecurity:\n`API requires a security token for a user with read permission on Centers.`",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/CentersApi_GetCenters.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "x_restlet_v1_centers": {
+            "main": "./lib/actions/x_restlet_v1_centers.js",
+            "title": "x_restlet_v1_centers",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/x_restlet_v1_centers.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "CentersApi_GetCenterDetails": {
+            "main": "./lib/actions/CentersApi_GetCenterDetails.js",
+            "title": "Gets the details of a Center",
+            "description": "API returns the details of a specific center. \n\nSecurity:\n`API requires a security token for a user with read permission on Centers.`",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/CentersApi_GetCenterDetails.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "x_restlet_v1_centers__CenterId_": {
+            "main": "./lib/actions/x_restlet_v1_centers__CenterId_.js",
+            "title": "x_restlet_v1_centers__CenterId_",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/x_restlet_v1_centers__CenterId_.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "post_v1_employees": {
+            "main": "./lib/actions/post_v1_employees.js",
+            "title": "Creates an employee",
+            "description": "fields that need to be unique : Code , UserName , Email",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/post_v1_employees.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "x_restlet_v1_employees": {
+            "main": "./lib/actions/x_restlet_v1_employees.js",
+            "title": "x_restlet_v1_employees",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/x_restlet_v1_employees.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "get_v1_employees_performance": {
+            "main": "./lib/actions/get_v1_employees_performance.js",
+            "title": "For employee performance metrics",
+            "description": "For providing the performance data for the employee.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/get_v1_employees_performance.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "x_restlet_v1_employees_performance": {
+            "main": "./lib/actions/x_restlet_v1_employees_performance.js",
+            "title": "x_restlet_v1_employees_performance",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/x_restlet_v1_employees_performance.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "get_v1_employees_sales": {
+            "main": "./lib/actions/get_v1_employees_sales.js",
+            "title": "Get Sales report of employees",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/get_v1_employees_sales.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "x_restlet_v1_employees_sales": {
+            "main": "./lib/actions/x_restlet_v1_employees_sales.js",
+            "title": "x_restlet_v1_employees_sales",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/x_restlet_v1_employees_sales.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "get_v1_employees__employee_id__payroll": {
+            "main": "./lib/actions/get_v1_employees__employee_id__payroll.js",
+            "title": "Get the payroll report of the employee",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/get_v1_employees__employee_id__payroll.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "x_restlet_v1_employees__employee_id__payroll": {
+            "main": "./lib/actions/x_restlet_v1_employees__employee_id__payroll.js",
+            "title": "x_restlet_v1_employees__employee_id__payroll",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/x_restlet_v1_employees__employee_id__payroll.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "get_v1_giftcards__giftcard_id_": {
+            "main": "./lib/actions/get_v1_giftcards__giftcard_id_.js",
+            "title": "Get details of giftcard",
+            "description": "Get details of a giftcard. API accepts a giftcard_id to return the response. Giftcard_id refers to the unique identifier stored in Zenoti and is not the same as the giftcard number. \n\n`Security:  A user who has read access to giftcards object can call this API to get giftcard details. User role must also have API Access permission.`\n\nNote:  It is not secure to create a GET API that fetches giftcard details by passing giftcard number as either a path parameter or a query parameter, because this information may reside in browser history, and can be misused.  If we need an API that returns giftcard details by passing a giftcard number,  we will need to create a POST api that accepts giftcard number in the request body.  ",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/get_v1_giftcards__giftcard_id_.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "x_restlet_v1_giftcards__giftcard_id_": {
+            "main": "./lib/actions/x_restlet_v1_giftcards__giftcard_id_.js",
+            "title": "x_restlet_v1_giftcards__giftcard_id_",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/x_restlet_v1_giftcards__giftcard_id_.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "GuestsApi_SearchGuests": {
+            "main": "./lib/actions/GuestsApi_SearchGuests.js",
+            "title": "Get a list of Guests",
+            "description": "This API returns a list of Guest objects that match one or more of the parameters listed below. For instance, if there is a need to check if a Guest already exists in the system based on an email, this API can help. \n\n```\na. UserCode\nb. MobileNumber\nc. Email\nd. FirstName\ne. LastName\n```\n\t\t\t\t\t\t\t\t\t\t\nIn the response JSON, only the following fields have desired values, others are reserved for future use. \n                \n```\na. Guest id - This is a GUID that refers to the guest. \nb. First name\nc. Last name\nd. Mobile phone model - DisplayNumber contains the full mobile number to use, other fields are reserved for future use.\ne. Gender\nf. Email\n```\n\t\t\t\t\t\t\t\t\t\t\nReturn values: \n```\na. If request.count value is  not provided, the API returns a maximum of 100 records. \nb. If the search string doesn't match any guest, it will return 200 OK, with no guests in the response JSON\nc. The results will be sorted on the basis of first name only\n```\n\nSecurity:\n`API requires a security token of an admin user with read permission on Guests.`",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/GuestsApi_SearchGuests.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "GuestsApi_AddGuest": {
+            "main": "./lib/actions/GuestsApi_AddGuest.js",
+            "title": "Creates a new Guest",
+            "description": "First name and Last name are always mandatory. Depending on the settings on your system, more fields will be mandatory - check the Add Guest page on your site (Loyalty-Manage Guests). One or more of the following may be set as mandatory: \n```\na. Mobile number\nb. Email\nc. Birthday\nd. Address1\ne. City\nf. State\ng. Country\nh. Nationality\ni. Referral Source\nj. Gender\n``` \n Please note that the API user has to send one of the following values for Gender: \n\n -1 - NotSpecified \n\n 0 - Female \n\n 1 - Male \n\n  Validate = true should be passed at all time so that input can be validated.\n\nSecurity:\n`API requires a security token of an admin user with write permission on Guest.`",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                },
+                "body_content_type": {
+                    "viewClass": "SelectView",
+                    "label": "Body Content-Type",
+                    "required": true,
+                    "prompt": "Choose a body Content-Type.",
+                    "model": {
+                        "application/json": "application/json",
+                        "text/json": "text/json",
+                        "application/xml": "application/xml",
+                        "text/xml": "text/xml",
+                        "application/x-www-form-urlencoded": "application/x-www-form-urlencoded",
+                        "text/html": "text/html"
+                    }
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/GuestsApi_AddGuest.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "x_restlet_v1_guests": {
+            "main": "./lib/actions/x_restlet_v1_guests.js",
+            "title": "x_restlet_v1_guests",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/x_restlet_v1_guests.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "GuestsApi_GetGuest": {
+            "main": "./lib/actions/GuestsApi_GetGuest.js",
+            "title": "Get details of a Guest",
+            "description": "API can be used to obtain details of a particular Guest user by passing a GuestId. \n\nSecurity:\n`API requires security  token of an admin with read permission on Guest, or that of a user who has permission to read information for a particular Guest.`",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/GuestsApi_GetGuest.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "put_v1_guests__guest_id_": {
+            "main": "./lib/actions/put_v1_guests__guest_id_.js",
+            "title": "Update a Guest",
+            "description": "API is used to perform update on the details of a guest. One or more values from below list can be updated. \n\n| Parameter  | Data Type | Description |\n| -------- | -------- | -------- |\n| firstname    | string  |  First name of the guest   |\n| middlename    | string  |  Middle name of the guest   |\n| lastname    | string   |  Last name of the guest   |\n| email*    | string   |  Email address of the guest   |\n| password    | string   |  New password   |\n| mobilephonemodel  | object  |  Refer to phone object definition. |\n| homephonemodel  | object   |  Refer to phone object definition.  |\n| gender  | string   |  male, female, other  |\n| dateofbirth  | datetime   |  yyyy-mm-ddThh:mm:ss.SSSZ   |\n| anniversarydate  | datetime   |  yyyy-mm-ddThh:mm:ss.SSSZ   |\n| address1  | string   |  Address field |\n| address2  | string   |  Address field  |\n| city  |  string  |  City of the guest   |\n| postalcode  |  string  |  Zip code  |\n| state  |  object  |  Refer to state object definition in request body   |\n| country  |  object  | Refer to country object definition in request body   |\n| nationality  |  object  |  Refer to nationality object definition in  request body   |\n| referralsource  |  object  |  Refer to referralsource object definition in request body   |\n| referredguest_id  |  string  |   |\n| receivetransactionalemail  |  boolean  |   |\n| receivetransactionalsms  |  boolean  |   |\n| receivemarketingemail  |  boolean  |   |\n| receivemarketingsms  |  boolean  |   |\n| creationdate  |  datetime  |   |\n| updatedate  |  datetime  |   |\n| center_id  |  string  |   |\n| is_member  |  boolean  | Indicates if guest is a valid member.  |\n| dob_incompleteyear  |  string  |  Date of birth without year information.  |\n\nSecurity:  `Requires an authorization for read and write permission on the guest object. * Edit Email and Edit Mobile permission should be enabled for the user.`\n\n\nAPI Specific Errors:\n\n| Error Code | Error Message | Note |\n| -------- | -------- | -------- |\n| 503 | MissingInput | One or more required input is missing |\n| 414 | GuestNotFound | Guest is not found |\n| 441 | UserCodeAlreadyExists | Code already exists |\n| 442 | UserEmailAlreadyExists | Email address already exists |\n| 481 | GuestMandatoryFieldsMissing | Mandatory fields are missing |\n| 482 | MobileNumberNotInLengthRange | Mobile  Number is outside the length range |\n| 484 | CountryIsNotValid | Invalid code provided for the country |\n| 484 | NationalityIsNotValid | Invalid code provided for the nationality |\n| 484 | StateIsNotValid | Invalid code provided for the state |\n\nSample code:\n\n```\n{\n  \"guest\": {\n    \"firstname\": \"TestGuest2SK\",\n    \"middlename\": \"Changed\",\n    \"lastname\": \"TestGuest1SK\",\n    \"email\": \"TestGuest1SrK@zenoti.com\",\n    \"mobilephonemodel\": {\n      \"countryid\": 91,\n      \"number\": \"9000498410\"\n    },\n  \"password\":\"changed1\",\n   \"ReferralSource\":{\n     \"Id\":\"3db2bb19-7430-4608-b34e-be44e64ac692\"\n   }\n  }\n}\n```",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/put_v1_guests__guest_id_.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "x_restlet_v1_guests__guest_id_": {
+            "main": "./lib/actions/x_restlet_v1_guests__guest_id_.js",
+            "title": "x_restlet_v1_guests__guest_id_",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/x_restlet_v1_guests__guest_id_.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "get_v1_guests__guest_id__loyaltypoints": {
+            "main": "./lib/actions/get_v1_guests__guest_id__loyaltypoints.js",
+            "title": "Get Guest Loyalty Points",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/get_v1_guests__guest_id__loyaltypoints.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "x_restlet_v1_guests__guest_id__loyaltypoints": {
+            "main": "./lib/actions/x_restlet_v1_guests__guest_id__loyaltypoints.js",
+            "title": "x_restlet_v1_guests__guest_id__loyaltypoints",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/x_restlet_v1_guests__guest_id__loyaltypoints.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "get_v1_guests__guest_id__notes": {
+            "main": "./lib/actions/get_v1_guests__guest_id__notes.js",
+            "title": "Get Guest Notes",
+            "description": "Returns notes associated with a guest\n\nNoteType - enum\n\n\n| enum | value |\n| -------- | -------- | \n| Generic     | 2     | \n|Checkin | 3   |\n| Booking     | 4     | \n| Payment     |8    | \n| Profile     | 10     | \n\nSecurity: `Requires read permission on guest and notes. Guest can view only her information.`",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/get_v1_guests__guest_id__notes.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "post_v1_guests__guest_id__notes": {
+            "main": "./lib/actions/post_v1_guests__guest_id__notes.js",
+            "title": "Create Guest Notes",
+            "description": "Create a note associated with the guest. \n\nNoteType - enum\n\n\n| enum | value |\n| -------- | -------- | \n| Generic     | 2     | \n|Checkin | 3   |\n| Booking     | 4     | \n| Payment     |8    | \n| Profile     | 10     | \n\n\n\nSecurity:`Write permission on notes object.`",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/post_v1_guests__guest_id__notes.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "x_restlet_v1_guests__guest_id__notes": {
+            "main": "./lib/actions/x_restlet_v1_guests__guest_id__notes.js",
+            "title": "x_restlet_v1_guests__guest_id__notes",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/x_restlet_v1_guests__guest_id__notes.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "delete_v1_guests__guest_id__notes__note_id_": {
+            "main": "./lib/actions/delete_v1_guests__guest_id__notes__note_id_.js",
+            "title": "Delete Guest Notes",
+            "description": "Delete a note associated with the guest. \n\nSecurity:`Write permission on notes object.`",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/delete_v1_guests__guest_id__notes__note_id_.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "x_restlet_v1_guests__guest_id__notes__note_id_": {
+            "main": "./lib/actions/x_restlet_v1_guests__guest_id__notes__note_id_.js",
+            "title": "x_restlet_v1_guests__guest_id__notes__note_id_",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/x_restlet_v1_guests__guest_id__notes__note_id_.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "get_v1_guests__guest_id__packages": {
+            "main": "./lib/actions/get_v1_guests__guest_id__packages.js",
+            "title": "Get Guest Package Details",
+            "description": "Returns packages bought by a guest. \n\nSecurity:  `Required read permission on the guest and packages object. Guest user can only view her information.`\n\n",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/get_v1_guests__guest_id__packages.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "x_restlet_v1_guests__guest_id__packages": {
+            "main": "./lib/actions/x_restlet_v1_guests__guest_id__packages.js",
+            "title": "x_restlet_v1_guests__guest_id__packages",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/x_restlet_v1_guests__guest_id__packages.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "post_v1_otp": {
+            "main": "./lib/actions/post_v1_otp.js",
+            "title": "Create an OTP",
+            "description": "API is used to create an OTP associated with a provided email address or phone number.  Below are the samples. The user has to pass either email or phone number (but not both) in the  request body. \n\nCase 1:  Generate OTP and send to email\n```\n{\n  \"CenterId\": \"3ECC3E05-8AAF-4792-BA0A-EC3D822FA6C5\",\n  \"Email\": \"danjohn@zenoti.com\"\n}\n```\n\nCase 2: Genetate OTP and send to phone number. \n```\n{\n   \"CenterId\": \"3ECC3E05-8AAF-4792-BA0A-EC3D822FA6C5\",\n   \"Phone\": {\n    \"CountryId\": 91,\n    \"Number\": \"3434443339\",\n    \"DisplayNumber\": \"3434443339\"\n  }\n}\n```\n\n\n\n\n\n",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/post_v1_otp.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "put_v1_otp": {
+            "main": "./lib/actions/put_v1_otp.js",
+            "title": "Verify an OTP",
+            "description": "API can be used to check if the provided OTP matches with the issued OTP to a given email address or phone number.  \n\nPUT method has been used for security reasons. Following request has to be sent in the body. \n\n```\n{\n  \"VerificationId\": \"4d0cf94f-be9a-43b1-9b7b-8aab57fbc7e2\",\n  \"OTP\": \"234954\",\n  \"CenterId\": \"3ECC3E05-8AAF-4792-BA0A-EC3D822FA6C5\"\n}\n```",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/put_v1_otp.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "x_restlet_v1_otp": {
+            "main": "./lib/actions/x_restlet_v1_otp.js",
+            "title": "x_restlet_v1_otp",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/x_restlet_v1_otp.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "ServicesApi_GetServices": {
+            "main": "./lib/actions/ServicesApi_GetServices.js",
+            "title": "Get a list of Services",
+            "description": "API returns a list of services. Following filter options are supported. \n\n```\na. centerId - To return services in a particular center. \nb. categoryId - To return services in a specified category only. \nc. isCatalogEnabled - To return services that can be displayed in a webstore. \nd. tag - To return services which are tagged by\n```\n\nSecurity:\n`Required read permisson on Services`",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/ServicesApi_GetServices.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "x_restlet_v1_services": {
+            "main": "./lib/actions/x_restlet_v1_services.js",
+            "title": "x_restlet_v1_services",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/x_restlet_v1_services.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "ServicesApi_GetServiceCategories": {
+            "main": "./lib/actions/ServicesApi_GetServiceCategories.js",
+            "title": "Get list of Service Categories",
+            "description": "API returns a list of main categories for the services. The API exposes following two filters. \n\n```\na. centerId - To view the categories only for a particular center. \nb. parentCategoryId - To view child categories of a particular main category.\n```\n\n\n\nSecurity:\n`Requires read permisson on Services.`",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/ServicesApi_GetServiceCategories.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "x_restlet_v1_services_categories": {
+            "main": "./lib/actions/x_restlet_v1_services_categories.js",
+            "title": "x_restlet_v1_services_categories",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/x_restlet_v1_services_categories.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "ServicesApi_GetServiceDetail": {
+            "main": "./lib/actions/ServicesApi_GetServiceDetail.js",
+            "title": "Get details of a Service",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/ServicesApi_GetServiceDetail.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "x_restlet_v1_services__ServiceId_": {
+            "main": "./lib/actions/x_restlet_v1_services__ServiceId_.js",
+            "title": "x_restlet_v1_services__ServiceId_",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/x_restlet_v1_services__ServiceId_.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "post_v1_tokens": {
+            "main": "./lib/actions/post_v1_tokens.js",
+            "title": "Create a Token",
+            "description": "This API is used to create a token for a valid user. The token can subsequenty be used as a Authorization token for other API calls. \nThe request body should be a string in the below format. (grant_type should be passed as \"password\"). \n\n```\nusername={{username}}&password={{password}}&clientid={{clientid}}&grant_type={{grant_type}}\n```\n\nNote:  OAuth2 token is not required to be passed in the header. Only API key is required. ",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                },
+                "body_content_type": {
+                    "viewClass": "SelectView",
+                    "label": "Body Content-Type",
+                    "required": true,
+                    "prompt": "Choose a body Content-Type.",
+                    "model": {
+                        "text/plain": "text/plain",
+                        "application/json": "application/json"
+                    }
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/post_v1_tokens.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "x_restlet_v1_tokens": {
+            "main": "./lib/actions/x_restlet_v1_tokens.js",
+            "title": "x_restlet_v1_tokens",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/x_restlet_v1_tokens.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "post_v2_0_appointments_availabletimes": {
+            "main": "./lib/actions/post_v2_0_appointments_availabletimes.js",
+            "title": "To get Available Time slots for the services and therapists",
+            "description": "\n\n\n\n\n\n\n\n\n\n",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/post_v2_0_appointments_availabletimes.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "x_restlet_v2_0_appointments_availabletimes": {
+            "main": "./lib/actions/x_restlet_v2_0_appointments_availabletimes.js",
+            "title": "x_restlet_v2_0_appointments_availabletimes",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/x_restlet_v2_0_appointments_availabletimes.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "get_v2_Organizations_Customfields": {
+            "main": "./lib/actions/get_v2_Organizations_Customfields.js",
+            "title": "Get the custom fields of an organization",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/get_v2_Organizations_Customfields.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "x_restlet_v2_Organizations_Customfields": {
+            "main": "./lib/actions/x_restlet_v2_Organizations_Customfields.js",
+            "title": "x_restlet_v2_Organizations_Customfields",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/x_restlet_v2_Organizations_Customfields.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "get_v2_appointments": {
+            "main": "./lib/actions/get_v2_appointments.js",
+            "title": "Get List of appointments in a particular center between two dates with guest ,status and therapist filters as optional filters",
+            "description": "Status - Enum\n\n| Enum | Value |\n| -------- | -------- | \n| NoShow     | -2     | \n| Cancelled     | -1     | \n| New     | 0     | \n| Closed     | 1    |\n| Checkin     | 2     | \n| Confirm     | 4     | \n| Break     | 10    | \n| NotSpecified     | 11     | \n| Available     | 20     | ",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/get_v2_appointments.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "x_restlet_v2_appointments": {
+            "main": "./lib/actions/x_restlet_v2_appointments.js",
+            "title": "x_restlet_v2_appointments",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/x_restlet_v2_appointments.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "get_v2_guests__guestId__memberships": {
+            "main": "./lib/actions/get_v2_guests__guestId__memberships.js",
+            "title": "Get Guest Membership Details",
+            "description": "Returns membership information of a guest. \n\nSecurity: `Read permission on guest and memberships.  Guest can only view her information.`",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/get_v2_guests__guestId__memberships.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "x_restlet_v2_guests__guestId__memberships": {
+            "main": "./lib/actions/x_restlet_v2_guests__guestId__memberships.js",
+            "title": "x_restlet_v2_guests__guestId__memberships",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/x_restlet_v2_guests__guestId__memberships.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "get_v2_guests__guest_id__customdata": {
+            "main": "./lib/actions/get_v2_guests__guest_id__customdata.js",
+            "title": "Get Guest Custom Data",
+            "description": "Returns custom data of a guest. \n\nSecurity:`Write permission on the custom data.`",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/get_v2_guests__guest_id__customdata.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "post_v2_guests__guest_id__customdata": {
+            "main": "./lib/actions/post_v2_guests__guest_id__customdata.js",
+            "title": "Create Guest Custom Data",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/post_v2_guests__guest_id__customdata.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "x_restlet_v2_guests__guest_id__customdata": {
+            "main": "./lib/actions/x_restlet_v2_guests__guest_id__customdata.js",
+            "title": "x_restlet_v2_guests__guest_id__customdata",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/x_restlet_v2_guests__guest_id__customdata.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "get_v2_opportunities": {
+            "main": "./lib/actions/get_v2_opportunities.js",
+            "title": "Gives list of Opportunities based on the filter",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/get_v2_opportunities.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "post_v2_opportunities": {
+            "main": "./lib/actions/post_v2_opportunities.js",
+            "title": "Create an Opportunity",
+            "description": "Example Request:\n```\n{\n\t\"center_id\"  : \"bcaf32ac-83a8-4988-8ebf-4a6d125835de\",\n\t\"opportunity_title\" : \"rda\",\n\t\"opportunity_description\" : \"hey its a good day\",\n\t\"opportunity_owner_id\" : \"ede781ef-7891-47b8-961e-a4729925431f\",\n\t\"guest_id\" : \"9dcd0709-74a8-48cd-9997-878e465f566d\",\n\t\"created_by_id\" : \"ede781ef-7891-47b8-961e-a4729925431f\",\n\t\"priority_type_id\" : \"E5196EC3-4E3C-4677-8AA2-B8E306F0FA5C\",\n\t\"status_id\" : \"5E61ACFD-CDE5-451E-B9BC-716B400453A4\",\n\t\"type\" : \"type\",\n\t\"followup_date\" : \"2016-12-15\",\n\t\"expected_close_date\" : \"2018-12-14\",\n\t\"listed_amount\" : 1253,\n\t\"offered_amount\" : 1000,\n\t\"optional_field_1\" : \"op1\",\n\t\"optional_field_2\" : \"op2\",\n\t\"optional_field_3\" : \"op3\",\n\t\"ticket_id\" : \"E5196EC3-1111-4677-8AA2-B8E306F0FA5C\",\n\t\"change_guest_center\" : false,\n\t\"disposition_id\" : \"5E61ACFD-CDE5-451E-B9BC-716B400453A4\",\n\t \"custom_fields\": {\n\t\t\"ED727888-AE73-439E-AEF2-22E48A5AF3AF\":\"value1\",\n    \"0fb8a958-682e-4025-adef-0bac63359e05\":\"value2\"\n\t},\n\t\"lead_source\" : {\n\t\"id\" : \"0fb8a958-682e-4025-adef-0bac63359e05\",\n\t\"code\" : \"GH103\"\n\t}\n}\n```",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/post_v2_opportunities.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "x_restlet_v2_opportunities": {
+            "main": "./lib/actions/x_restlet_v2_opportunities.js",
+            "title": "x_restlet_v2_opportunities",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/x_restlet_v2_opportunities.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "get_v2_opportunities_metadata__section_": {
+            "main": "./lib/actions/get_v2_opportunities_metadata__section_.js",
+            "title": "Gives Meta Data of the Opportunities in the Organization.",
+            "description": "section : {\n                   All or -1 ,\n                   Priority or 1,\n                   Stage  or 2,\n                   Source or 3,\n                   Disposition or 4\n                }\n\nEnum - active:{\n                           0 - All,\n\t\t\t\t\t\t\t\t\t\t\t\t\t 1 - Active,\n\t\t\t\t\t\t\t\t\t\t\t\t\t 2 - Inactive,\n                         }\n\t\t\t\t\t\t\t",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/get_v2_opportunities_metadata__section_.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "x_restlet_v2_opportunities_metadata__section_": {
+            "main": "./lib/actions/x_restlet_v2_opportunities_metadata__section_.js",
+            "title": "x_restlet_v2_opportunities_metadata__section_",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/x_restlet_v2_opportunities_metadata__section_.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "delete_v2_opportunities__OpportunityId_": {
+            "main": "./lib/actions/delete_v2_opportunities__OpportunityId_.js",
+            "title": "Deletes an Opportunity",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/delete_v2_opportunities__OpportunityId_.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "get_v2_opportunities__OpportunityId_": {
+            "main": "./lib/actions/get_v2_opportunities__OpportunityId_.js",
+            "title": "Gets Details of an opportunity",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/get_v2_opportunities__OpportunityId_.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "put_v2_opportunities__OpportunityId_": {
+            "main": "./lib/actions/put_v2_opportunities__OpportunityId_.js",
+            "title": "Edits Opportunity Details",
+            "description": "Example Request:\n\n```\n{\n\t\"center_id\"  : \"bcaf32ac-83a8-4988-8ebf-4a6d125835de\",\n\t\"opportunity_title\" : \"stafdfgcz5\",\n\t\"opportunity_description\" : \"hey its a good day\",\n\t\"opportunity_owner_id\" : \"ede781ef-7891-47b8-961e-a4729925431f\",\n\t\"guest_id\" : \"9dcd0709-74a8-48cd-9997-878e465f566d\",\n\t\"priority_type_id\" : \"E5196EC3-4E3C-4677-8AA2-B8E306F0FA5C\",\n\t\"stage_id\" : \"5E61ACFD-CDE5-451E-B9BC-716B400453A4\",\n\t\"type\" : \"package\",\n\t\"followup_date\" : \"2017-12-15\",\n\t\"expected_close_date\" : \"2018-12-14\",\n\t\"listed_amount\" : 1253,\n\t\"offered_amount\" : 1000,\n\t\"optional_field_1\" : \"op1\",\n\t\"optional_field_2\" : \"op2\",\n\t\"optional_field_3\" : \"op3\",\n\t\"change_guest_center\" : false,\n\t\"disposition_id\" : \"5E61ACFD-CDE5-451E-B9BC-716B400453A4\",\n  \"custom_fields\": {\n\t\t\"ED727888-AE73-439E-AEF2-22E48A5AF3AF\":\"value1\",\n    \"0fb8a958-682e-4025-adef-0bac63359e05\":\"value2\"\n\t},\n\t\"lead_source\" : {\n\t\"id\" : \"0fb8a958-682e-4025-adef-0bac63359e05\",\n\t\"code\" : \"GH103\"\n\t}\n}\n```",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/put_v2_opportunities__OpportunityId_.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "x_restlet_v2_opportunities__OpportunityId_": {
+            "main": "./lib/actions/x_restlet_v2_opportunities__OpportunityId_.js",
+            "title": "x_restlet_v2_opportunities__OpportunityId_",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/x_restlet_v2_opportunities__OpportunityId_.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "get_v2_opportunities__OpportunityId__notes": {
+            "main": "./lib/actions/get_v2_opportunities__OpportunityId__notes.js",
+            "title": "Gives list of Opportunity Notes",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/get_v2_opportunities__OpportunityId__notes.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "post_v2_opportunities__OpportunityId__notes": {
+            "main": "./lib/actions/post_v2_opportunities__OpportunityId__notes.js",
+            "title": "Create an Opportunity Notes",
+            "description": "Example Request:\n```\n{\n\t\"notes\" : \"height 6 feet\",\n\t\"updated_by_id\" : \"ede781ef-7891-47b8-961e-a4729925431f\"\n}\n```",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/post_v2_opportunities__OpportunityId__notes.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "x_restlet_v2_opportunities__OpportunityId__notes": {
+            "main": "./lib/actions/x_restlet_v2_opportunities__OpportunityId__notes.js",
+            "title": "x_restlet_v2_opportunities__OpportunityId__notes",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/x_restlet_v2_opportunities__OpportunityId__notes.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "get_v2_sales_salesreport": {
+            "main": "./lib/actions/get_v2_sales_salesreport.js",
+            "title": "Get sales report of a center",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/get_v2_sales_salesreport.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "x_restlet_v2_sales_salesreport": {
+            "main": "./lib/actions/x_restlet_v2_sales_salesreport.js",
+            "title": "x_restlet_v2_sales_salesreport",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/x_restlet_v2_sales_salesreport.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "get_v5_guests": {
+            "main": "./lib/actions/get_v5_guests.js",
+            "title": "Returns search results of a guest search",
+            "description": "search_value passed is used to search over below attributes\n\n| Guest Properties |\n| --- |\n| UserCode |\n| Username |\n| HomePhone |\n| WorkPhone |\n| FirstName  |\n| LastName |\n| MobilePhone |\n| Email |\n",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/get_v5_guests.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "x_restlet_v5_guests": {
+            "main": "./lib/actions/x_restlet_v5_guests.js",
+            "title": "x_restlet_v5_guests",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/x_restlet_v5_guests.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        }
+    }
+}

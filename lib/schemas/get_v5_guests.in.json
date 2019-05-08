@@ -1,0 +1,29 @@
+{
+    "type": "object",
+    "properties": {
+        "center_id": {
+            "required": false,
+            "type": "string"
+        },
+        "search_value": {
+            "required": true,
+            "type": "string"
+        },
+        "in_center": {
+            "required": false,
+            "type": "boolean"
+        },
+        "include_employees": {
+            "required": false,
+            "type": "boolean"
+        },
+        "page_num": {
+            "required": false,
+            "type": "number"
+        },
+        "page_size": {
+            "required": false,
+            "type": "string"
+        }
+    }
+}

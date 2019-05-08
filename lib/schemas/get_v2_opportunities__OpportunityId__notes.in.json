@@ -1,0 +1,13 @@
+{
+    "type": "object",
+    "properties": {
+        "Authorization": {
+            "required": false,
+            "type": "string"
+        },
+        "Content_Type": {
+            "required": false,
+            "type": "string"
+        }
+    }
+}

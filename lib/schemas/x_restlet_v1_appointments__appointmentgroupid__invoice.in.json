@@ -1,0 +1,9 @@
+{
+    "type": "object",
+    "properties": {
+        "appointmentgroupid": {
+            "required": true,
+            "type": "string"
+        }
+    }
+}

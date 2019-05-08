@@ -1,0 +1,27 @@
+{
+    "type": "object",
+    "properties": {
+        "Authorization": {
+            "required": true,
+            "type": "string"
+        },
+        "requestBody": {
+            "example": "{\r\n\t\"notes\" : \"height 6 feet\",\r\n\t\"updated_by_id\" : \"ede781ef-7891-47b8-961e-a4729925431f\"\r\n}",
+            "properties": {
+                "notes": {
+                    "description": "Information stored in the notes",
+                    "type": "string"
+                },
+                "updated_by_id": {
+                    "description": "DataType : UniqueIdentifier(GUID),GUID of the employee by whom the notes is updated",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "Content_Type": {
+            "required": false,
+            "type": "string"
+        }
+    }
+}

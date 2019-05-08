@@ -1,0 +1,17 @@
+{
+    "type": "object",
+    "properties": {
+        "CatalogEnabled": {
+            "required": false,
+            "type": "boolean"
+        },
+        "Authorization": {
+            "required": false,
+            "type": "string"
+        },
+        "Apikey": {
+            "required": false,
+            "type": "string"
+        }
+    }
+}

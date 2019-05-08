@@ -1,0 +1,13 @@
+{
+    "type": "object",
+    "properties": {
+        "AppointmentId": {
+            "required": true,
+            "type": "string"
+        },
+        "AppointmentFieldId": {
+            "required": true,
+            "type": "string"
+        }
+    }
+}

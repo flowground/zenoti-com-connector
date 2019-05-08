@@ -1,0 +1,314 @@
+{
+    "type": "object",
+    "properties": {
+        "Authorization": {
+            "required": false,
+            "type": "string"
+        },
+        "requestBody": {
+            "properties": {
+                "EmployeeDetail": {
+                    "properties": {
+                        "AccessInfo": {
+                            "properties": {
+                                "AccessCode": {
+                                    "type": "string"
+                                },
+                                "AccessEmployeeMobileApp": {
+                                    "type": "boolean"
+                                },
+                                "AccessManagerMobileApp": {
+                                    "type": "boolean"
+                                },
+                                "AllowApiAccess": {
+                                    "type": "boolean"
+                                },
+                                "AllowOfflineAccess": {
+                                    "type": "boolean"
+                                },
+                                "WaiveBiometricCheckin": {
+                                    "type": "boolean"
+                                }
+                            },
+                            "type": "object"
+                        },
+                        "AdditionalField1": {
+                            "type": "string"
+                        },
+                        "AdditionalField2": {
+                            "type": "string"
+                        },
+                        "AddressLine1": {
+                            "type": "string"
+                        },
+                        "AddressLine2": {
+                            "type": "string"
+                        },
+                        "AnniversaryDate": {
+                            "format": "date-time",
+                            "type": "string"
+                        },
+                        "BirthDate": {
+                            "format": "date-time",
+                            "type": "string"
+                        },
+                        "CenterId": {
+                            "type": "string"
+                        },
+                        "CityName": {
+                            "type": "string"
+                        },
+                        "Code": {
+                            "type": "string"
+                        },
+                        "CountryId": {
+                            "format": "int32",
+                            "type": "integer"
+                        },
+                        "Credentials": {
+                            "properties": {
+                                "Password": {
+                                    "type": "string"
+                                },
+                                "UserName": {
+                                    "type": "string"
+                                }
+                            },
+                            "required": [
+                                "Password",
+                                "UserName"
+                            ],
+                            "type": "object"
+                        },
+                        "Email": {
+                            "type": "string"
+                        },
+                        "FirstName": {
+                            "type": "string"
+                        },
+                        "FullName": {
+                            "type": "string"
+                        },
+                        "Gender": {
+                            "enum": [
+                                0,
+                                1,
+                                2,
+                                3,
+                                4
+                            ],
+                            "format": "int32",
+                            "type": "integer"
+                        },
+                        "HomePhone": {
+                            "type": "string"
+                        },
+                        "HomePhoneModel": {
+                            "properties": {
+                                "CountryId": {
+                                    "format": "int32",
+                                    "type": "integer"
+                                },
+                                "DisplayNumber": {
+                                    "type": "string"
+                                },
+                                "Number": {
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        },
+                        "Id": {
+                            "type": "string"
+                        },
+                        "IsAvailable": {
+                            "type": "boolean"
+                        },
+                        "IsConsultant": {
+                            "type": "boolean"
+                        },
+                        "Job": {
+                            "properties": {
+                                "CompanyName": {
+                                    "type": "string"
+                                },
+                                "DesignationId": {
+                                    "type": "string"
+                                },
+                                "EligibleForCommissionBonus": {
+                                    "type": "boolean"
+                                },
+                                "EndDate": {
+                                    "format": "date-time",
+                                    "type": "string"
+                                },
+                                "HourlyRate": {
+                                    "format": "double",
+                                    "type": "number"
+                                },
+                                "JobId": {
+                                    "type": "string"
+                                },
+                                "MandatoryBreakMinutesPerDay": {
+                                    "format": "int32",
+                                    "type": "integer"
+                                },
+                                "MaximumWorkHours": {
+                                    "format": "int32",
+                                    "type": "integer"
+                                },
+                                "RequestTherapistBonus": {
+                                    "format": "double",
+                                    "type": "number"
+                                },
+                                "Salary": {
+                                    "format": "double",
+                                    "type": "number"
+                                },
+                                "SpecialLeaveDays": {
+                                    "format": "int32",
+                                    "type": "integer"
+                                },
+                                "StartDate": {
+                                    "format": "date-time",
+                                    "type": "string"
+                                },
+                                "TargetRevenue": {
+                                    "format": "double",
+                                    "type": "number"
+                                },
+                                "TenureStartDate": {
+                                    "format": "date-time",
+                                    "type": "string"
+                                },
+                                "VacationDays": {
+                                    "format": "int32",
+                                    "type": "integer"
+                                }
+                            },
+                            "required": [
+                                "JobId"
+                            ],
+                            "type": "object"
+                        },
+                        "Keyword": {
+                            "type": "string"
+                        },
+                        "LastName": {
+                            "type": "string"
+                        },
+                        "MiddleName": {
+                            "type": "string"
+                        },
+                        "MobilePhoneModel": {
+                            "properties": {
+                                "CountryId": {
+                                    "format": "int32",
+                                    "type": "integer"
+                                },
+                                "DisplayNumber": {
+                                    "type": "string"
+                                },
+                                "Number": {
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        },
+                        "NickName": {
+                            "type": "string"
+                        },
+                        "PhoneNumber": {
+                            "type": "string"
+                        },
+                        "Preferences": {
+                            "properties": {
+                                "CultureId": {
+                                    "format": "int32",
+                                    "type": "integer"
+                                },
+                                "ReceiveDailyReports": {
+                                    "type": "boolean"
+                                },
+                                "ReceiveMarketingEmails": {
+                                    "type": "boolean"
+                                },
+                                "ReceiveMarketingTextMessages": {
+                                    "type": "boolean"
+                                },
+                                "ReceiveRegisterClosureReports": {
+                                    "type": "boolean"
+                                },
+                                "ReceiveTransactionalEmails": {
+                                    "type": "boolean"
+                                },
+                                "ReceiveTransactionalTextMessages": {
+                                    "type": "boolean"
+                                },
+                                "SearchTags": {
+                                    "type": "string"
+                                },
+                                "SendConfirmationForAppointments": {
+                                    "type": "boolean"
+                                }
+                            },
+                            "type": "object"
+                        },
+                        "ScaledPrice": {
+                            "format": "double",
+                            "type": "number"
+                        },
+                        "ScalingFactor": {
+                            "format": "double",
+                            "type": "number"
+                        },
+                        "ServiceTime": {
+                            "format": "int32",
+                            "type": "integer"
+                        },
+                        "ShortName": {
+                            "type": "string"
+                        },
+                        "StateId": {
+                            "format": "int32",
+                            "type": "integer"
+                        },
+                        "StateOther": {
+                            "type": "string"
+                        },
+                        "VanityImageUrl": {
+                            "type": "string"
+                        },
+                        "WorkPhone": {
+                            "type": "string"
+                        },
+                        "WorkPhoneModel": {
+                            "properties": {
+                                "CountryId": {
+                                    "format": "int32",
+                                    "type": "integer"
+                                },
+                                "DisplayNumber": {
+                                    "type": "string"
+                                },
+                                "Number": {
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "required": [
+                        "Code",
+                        "Credentials",
+                        "FirstName",
+                        "Job",
+                        "LastName"
+                    ],
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        }
+    }
+}

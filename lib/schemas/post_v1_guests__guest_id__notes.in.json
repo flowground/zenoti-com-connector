@@ -1,0 +1,43 @@
+{
+    "type": "object",
+    "properties": {
+        "guest_id": {
+            "required": true,
+            "type": "string"
+        },
+        "requestBody": {
+            "properties": {
+                "CreateDate": {
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "Id": {
+                    "type": "string"
+                },
+                "IsPrivate": {
+                    "type": "boolean"
+                },
+                "NoteType": {
+                    "description": "| enum | value |\n| -------- | -------- | \n| Generic     | 2     | \n|Checkin | 3   |\n| Booking     | 4     | \n| Payment     |8    | \n| Profile     | 10     |",
+                    "enum": [
+                        0,
+                        2,
+                        3,
+                        4,
+                        8,
+                        10
+                    ],
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "Text": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "x-restlet": {
+                "section": "Models"
+            }
+        }
+    }
+}

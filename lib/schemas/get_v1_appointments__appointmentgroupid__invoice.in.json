@@ -1,0 +1,13 @@
+{
+    "type": "object",
+    "properties": {
+        "Authorization": {
+            "required": false,
+            "type": "string"
+        },
+        "API_Key": {
+            "required": false,
+            "type": "string"
+        }
+    }
+}

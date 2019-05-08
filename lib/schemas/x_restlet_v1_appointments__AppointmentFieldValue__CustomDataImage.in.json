@@ -1,0 +1,9 @@
+{
+    "type": "object",
+    "properties": {
+        "AppointmentFieldValue": {
+            "required": true,
+            "type": "string"
+        }
+    }
+}

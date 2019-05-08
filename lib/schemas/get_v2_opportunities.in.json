@@ -1,0 +1,72 @@
+{
+    "type": "object",
+    "properties": {
+        "view_id": {
+            "required": true,
+            "type": "string"
+        },
+        "page_num": {
+            "required": true,
+            "type": "number"
+        },
+        "records": {
+            "required": true,
+            "type": "number"
+        },
+        "keywords": {
+            "required": false,
+            "type": "string"
+        },
+        "owner": {
+            "required": false,
+            "type": "string"
+        },
+        "type": {
+            "required": false,
+            "type": "string"
+        },
+        "status_id": {
+            "required": false,
+            "type": "string"
+        },
+        "priority_id": {
+            "required": false,
+            "type": "string"
+        },
+        "guest_id": {
+            "required": false,
+            "type": "string"
+        },
+        "creation_from_date": {
+            "required": false,
+            "type": "string",
+            "format": "date-time"
+        },
+        "creation_to_date": {
+            "required": false,
+            "type": "string",
+            "format": "date-time"
+        },
+        "followup_from_date": {
+            "required": false,
+            "type": "string",
+            "format": "date-time"
+        },
+        "followup_to_date": {
+            "required": false,
+            "type": "string"
+        },
+        "disposition_id": {
+            "required": false,
+            "type": "string"
+        },
+        "Authorization": {
+            "required": false,
+            "type": "string"
+        },
+        "Content_Type": {
+            "required": false,
+            "type": "string"
+        }
+    }
+}

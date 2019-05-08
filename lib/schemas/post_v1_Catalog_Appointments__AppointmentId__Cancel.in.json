@@ -1,0 +1,17 @@
+{
+    "type": "object",
+    "properties": {
+        "Authorization": {
+            "required": false,
+            "type": "string"
+        },
+        "Apikey": {
+            "required": false,
+            "type": "string"
+        },
+        "requestBody": {
+            "description": "Below are the Fields of input Json.\n| Field | Value type | Description |\n| -------- | -------- | -------- |\n| ReasonId `*`    | GUID     | Reason for Cancellation     |\n| Comments     | string     | Comments  |\n\n\nNote: Feilds marked with `*` are mandatory.",
+            "type": "object"
+        }
+    }
+}

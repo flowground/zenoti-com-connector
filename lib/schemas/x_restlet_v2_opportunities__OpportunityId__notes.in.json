@@ -1,0 +1,9 @@
+{
+    "type": "object",
+    "properties": {
+        "OpportunityId": {
+            "required": true,
+            "type": "string"
+        }
+    }
+}

@@ -1,0 +1,114 @@
+{
+    "type": "object",
+    "properties": {
+        "Authorization": {
+            "required": true,
+            "type": "string"
+        },
+        "requestBody": {
+            "example": "{\n\t\"center_id\"  : \"bcaf32ac-83a8-4988-8ebf-4a6d125835de\",\n\t\"opportunity_title\" : \"rda\",\n\t\"opportunity_description\" : \"hey its a good day\",\n\t\"opportunity_owner_id\" : \"ede781ef-7891-47b8-961e-a4729925431f\",\n\t\"guest_id\" : \"9dcd0709-74a8-48cd-9997-878e465f566d\",\n\t\"created_by_id\" : \"ede781ef-7891-47b8-961e-a4729925431f\",\n\t\"priority_type_id\" : \"E5196EC3-4E3C-4677-8AA2-B8E306F0FA5C\",\n\t\"status_id\" : \"5E61ACFD-CDE5-451E-B9BC-716B400453A4\",\n\t\"type\" : \"type\",\n\t\"followup_date\" : \"2016-12-15\",\n\t\"expected_close_date\" : \"2018-12-14\",\n\t\"listed_amount\" : 1253,\n\t\"offered_amount\" : 1000,\n\t\"optional_field_1\" : \"op1\",\n\t\"optional_field_2\" : \"op2\",\n\t\"optional_field_3\" : \"op3\",\n\t\"ticket_id\" : \"E5196EC3-1111-4677-8AA2-B8E306F0FA5C\",\n\t\"change_guest_center\" : false,\n\t\"disposition_id\" : \"5E61ACFD-CDE5-451E-B9BC-716B400453A4\",\n\t \"custom_fields\": {\n\t\t\"ED727888-AE73-439E-AEF2-22E48A5AF3AF\":\"value1\",\n    \"0fb8a958-682e-4025-adef-0bac63359e05\":\"value2\"\n\t},\n\t\"lead_source\" : {\n\t\"id\" : \"0fb8a958-682e-4025-adef-0bac63359e05\",\n\t\"code\" : \"GH103\"\n\t}\n}",
+            "properties": {
+                "center_id": {
+                    "description": "Data Type : Unique Identifier(GUID)",
+                    "type": "string"
+                },
+                "change_guest_center": {
+                    "description": "boolean which changes guest's center to the valid center_id passed if made true",
+                    "type": "boolean"
+                },
+                "created_by_id": {
+                    "description": "GUID of the employee by whom the opportunity is being created,\nData Type : Unique Identifier(GUID)",
+                    "type": "string"
+                },
+                "custom_data": {
+                    "description": "Key has the FieldId of the custom field and Value has the value of the custom field,\nData Type: Dictionary<GUID,string>",
+                    "type": "object"
+                },
+                "disposition_id": {
+                    "description": "GUID of the Disposition\nData Type: Unique Identifier(GUID)",
+                    "type": "string"
+                },
+                "expected_close_date": {
+                    "description": "Expected Date of closure,\nData Type : DateTime(yyyy-mm-dd)",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "followup_date": {
+                    "description": "Data Type :DateTime (yyyy-mm-dd)",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "guest_id": {
+                    "description": "GUID of the guest,\nData Type : Unique Identifier(GUID)",
+                    "type": "string"
+                },
+                "lead_source": {
+                    "properties": {
+                        "code": {
+                            "type": "string"
+                        },
+                        "id": {
+                            "description": "Data Type: Unque Identifier (GUID)",
+                            "type": "string"
+                        }
+                    },
+                    "type": "object"
+                },
+                "listed_amount": {
+                    "description": "listed price of the opportunity",
+                    "type": "number"
+                },
+                "offered_amount": {
+                    "description": "offered price of the opportunity",
+                    "type": "number"
+                },
+                "opportunity_description": {
+                    "type": "string"
+                },
+                "opportunity_owner_id": {
+                    "description": "GUID of the employee who owns the opportunity,\nData Type : Unique Identifier(GUID)",
+                    "type": "string"
+                },
+                "opportunity_title": {
+                    "type": "string"
+                },
+                "optional_field_1": {
+                    "type": "string"
+                },
+                "optional_field_2": {
+                    "type": "string"
+                },
+                "optional_field_3": {
+                    "type": "string"
+                },
+                "priority_type_id": {
+                    "description": "GUID of the priority type of the opportunity,\nData Type : Unique Identifier(GUID)",
+                    "type": "string"
+                },
+                "status_id": {
+                    "description": "GUID of the stage type (or) status type of the opportunity,\nData Type : Unique Identifier(GUID)",
+                    "type": "string"
+                },
+                "ticket_id": {
+                    "description": "Data Type: Unque Identifier (GUID)",
+                    "type": "string"
+                },
+                "type": {
+                    "description": "opportunity type",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "center_id",
+                "followup_date",
+                "guest_id",
+                "opportunity_title"
+            ],
+            "type": "object"
+        },
+        "Content_Type": {
+            "required": false,
+            "type": "string"
+        }
+    }
+}

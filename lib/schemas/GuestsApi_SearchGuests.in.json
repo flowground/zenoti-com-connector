@@ -1,0 +1,50 @@
+{
+    "type": "object",
+    "properties": {
+        "ApiKey": {
+            "required": false,
+            "type": "string"
+        },
+        "Authorization": {
+            "required": false,
+            "type": "string"
+        },
+        "request_centerId": {
+            "required": false,
+            "type": "string"
+        },
+        "request_searchValue": {
+            "required": false,
+            "type": "string"
+        },
+        "request_count": {
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+        },
+        "request_page": {
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+        },
+        "request_size": {
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+        },
+        "request_sorters": {
+            "required": false,
+            "type": "array",
+            "items": {
+                "type": "string"
+            }
+        },
+        "request_filters": {
+            "required": false,
+            "type": "array",
+            "items": {
+                "type": "string"
+            }
+        }
+    }
+}

@@ -1,0 +1,13 @@
+{
+    "type": "object",
+    "properties": {
+        "CenterId": {
+            "required": true,
+            "type": "string"
+        },
+        "InvoiceId": {
+            "required": false,
+            "type": "string"
+        }
+    }
+}

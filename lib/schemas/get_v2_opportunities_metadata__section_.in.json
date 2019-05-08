@@ -1,0 +1,13 @@
+{
+    "type": "object",
+    "properties": {
+        "active": {
+            "required": false,
+            "type": "number"
+        },
+        "source_code": {
+            "required": false,
+            "type": "string"
+        }
+    }
+}

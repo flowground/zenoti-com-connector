@@ -1,0 +1,17 @@
+{
+    "type": "object",
+    "properties": {
+        "userName": {
+            "required": false,
+            "type": "string"
+        },
+        "Authorization": {
+            "required": false,
+            "type": "string"
+        },
+        "Apikey": {
+            "required": false,
+            "type": "string"
+        }
+    }
+}

@@ -1,0 +1,29 @@
+{
+    "type": "object",
+    "properties": {
+        "CenterId": {
+            "required": false,
+            "type": "string"
+        },
+        "GuestId": {
+            "required": false,
+            "type": "string"
+        },
+        "IsForced": {
+            "required": false,
+            "type": "boolean"
+        },
+        "Notes": {
+            "required": false,
+            "type": "string"
+        },
+        "Invoice": {
+            "required": false,
+            "type": "string"
+        },
+        "requestBody": {
+            "description": "{\n  \"Invoice\": {\n    \"InvoiceMemberships\": [\n      {\n        \"AppointmentMembership\": {\n          \"Membership\": {\n            \"VersionId\": \"2431EBCB-097B-48AD-BE20-DAB1E979C145\"\n          },\n          \"Employee\": {\n            \"Id\": \"6372bb51-e507-4431-b0cc-6be2143bb99a\"\n          },\n          \"Quantity\": 1\n        }\n      }\n    ]\n  },\n  \"CenterId\": \"9a895b3c-1994-42c0-bc61-efda4a6e2828\",\n  \"GuestId\": \"51c5d84b-a4db-4cd6-bb3e-0d410642da66\",\n  \"IsForced\": true,\n  \"Notes\": \"text\"\n}",
+            "type": "object"
+        }
+    }
+}

@@ -1,0 +1,9 @@
+{
+    "type": "object",
+    "properties": {
+        "requestBody": {
+            "description": "{\n  \"InvoiceId\": \"22b0d290-1284-4075-9439-9855bd18da27\",\n  \"AppointmentGroupId\": \"aa979551-8f99-4aad-a833-f53096485bac\"\n}",
+            "type": "object"
+        }
+    }
+}

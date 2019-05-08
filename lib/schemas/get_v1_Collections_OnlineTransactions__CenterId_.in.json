@@ -1,0 +1,39 @@
+{
+    "type": "object",
+    "properties": {
+        "StartDate": {
+            "required": false,
+            "type": "string",
+            "format": "date-time"
+        },
+        "EndDate": {
+            "required": false,
+            "type": "string",
+            "format": "date-time"
+        },
+        "TransctionType": {
+            "required": false,
+            "type": "integer"
+        },
+        "TranctionStatus": {
+            "required": false,
+            "type": "integer"
+        },
+        "CardLogo": {
+            "required": false,
+            "type": "string"
+        },
+        "View": {
+            "required": false,
+            "type": "integer"
+        },
+        "Authorization": {
+            "required": false,
+            "type": "string"
+        },
+        "Content_Type": {
+            "required": false,
+            "type": "string"
+        }
+    }
+}

@@ -1,0 +1,25 @@
+{
+    "type": "object",
+    "properties": {
+        "GuestId": {
+            "required": true,
+            "type": "string"
+        },
+        "CenterId": {
+            "required": true,
+            "type": "string"
+        },
+        "TransactionForm": {
+            "required": false,
+            "type": "integer"
+        },
+        "Authorization": {
+            "required": false,
+            "type": "string"
+        },
+        "Apikey": {
+            "required": false,
+            "type": "string"
+        }
+    }
+}

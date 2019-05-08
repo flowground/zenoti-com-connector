@@ -1,0 +1,22 @@
+{
+    "type": "object",
+    "properties": {
+        "ApiKey": {
+            "required": false,
+            "type": "string"
+        },
+        "Authorization": {
+            "required": false,
+            "type": "string"
+        },
+        "request_type": {
+            "required": false,
+            "type": "integer",
+            "format": "int32",
+            "enum": [
+                0,
+                1
+            ]
+        }
+    }
+}

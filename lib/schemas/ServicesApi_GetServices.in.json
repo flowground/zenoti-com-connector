@@ -1,0 +1,39 @@
+{
+    "type": "object",
+    "properties": {
+        "CatalogEnabled": {
+            "required": false,
+            "type": "boolean"
+        },
+        "Tag": {
+            "required": false,
+            "type": "string"
+        },
+        "ApiKey": {
+            "required": false,
+            "type": "string"
+        },
+        "Authorization": {
+            "required": false,
+            "type": "string"
+        },
+        "request_centerId": {
+            "required": false,
+            "type": "string"
+        },
+        "request_categoryId": {
+            "required": false,
+            "type": "string"
+        },
+        "request_pageNum": {
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+        },
+        "request_pageSize": {
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+        }
+    }
+}

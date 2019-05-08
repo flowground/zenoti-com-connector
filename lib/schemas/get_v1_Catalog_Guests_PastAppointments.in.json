@@ -1,0 +1,39 @@
+{
+    "type": "object",
+    "properties": {
+        "Page": {
+            "required": false,
+            "type": "integer"
+        },
+        "Size": {
+            "required": false,
+            "type": "integer"
+        },
+        "Sorters": {
+            "required": false,
+            "type": "string"
+        },
+        "Filters": {
+            "required": false,
+            "type": "string"
+        },
+        "startDate": {
+            "required": false,
+            "type": "string",
+            "format": "date"
+        },
+        "endDate": {
+            "required": false,
+            "type": "string",
+            "format": "date"
+        },
+        "Authorization": {
+            "required": false,
+            "type": "string"
+        },
+        "Apikey": {
+            "required": false,
+            "type": "string"
+        }
+    }
+}

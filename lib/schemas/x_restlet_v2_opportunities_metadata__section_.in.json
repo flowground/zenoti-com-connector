@@ -1,0 +1,9 @@
+{
+    "type": "object",
+    "properties": {
+        "section": {
+            "required": true,
+            "type": "string"
+        }
+    }
+}

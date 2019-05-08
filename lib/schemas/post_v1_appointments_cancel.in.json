@@ -1,0 +1,20 @@
+{
+    "type": "object",
+    "properties": {
+        "requestBody": {
+            "properties": {
+                "AppointmentGroupId": {
+                    "type": "string"
+                },
+                "Comments": {
+                    "type": "string"
+                },
+                "ReasonId": {
+                    "format": "int64",
+                    "type": "integer"
+                }
+            },
+            "type": "object"
+        }
+    }
+}

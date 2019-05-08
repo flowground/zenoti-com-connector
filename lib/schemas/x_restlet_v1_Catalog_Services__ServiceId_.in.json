@@ -1,0 +1,9 @@
+{
+    "type": "object",
+    "properties": {
+        "ServiceId": {
+            "required": true,
+            "type": "string"
+        }
+    }
+}

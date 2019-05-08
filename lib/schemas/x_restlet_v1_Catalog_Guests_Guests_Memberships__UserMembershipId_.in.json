@@ -1,0 +1,9 @@
+{
+    "type": "object",
+    "properties": {
+        "UserMembershipId": {
+            "required": true,
+            "type": "string"
+        }
+    }
+}

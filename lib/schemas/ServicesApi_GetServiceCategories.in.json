@@ -1,0 +1,25 @@
+{
+    "type": "object",
+    "properties": {
+        "CatalogEnabled": {
+            "required": false,
+            "type": "boolean"
+        },
+        "ApiKey": {
+            "required": false,
+            "type": "string"
+        },
+        "Authorization": {
+            "required": false,
+            "type": "string"
+        },
+        "request_centerId": {
+            "required": false,
+            "type": "string"
+        },
+        "request_parentCategoryId": {
+            "required": false,
+            "type": "string"
+        }
+    }
+}

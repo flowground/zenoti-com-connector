@@ -1,0 +1,17 @@
+{
+    "type": "object",
+    "properties": {
+        "Authorization": {
+            "required": false,
+            "type": "string"
+        },
+        "Apikey": {
+            "required": false,
+            "type": "string"
+        },
+        "requestBody": {
+            "description": "All of the below fields are nullable\n\n| Field |Value Type | Description |\n| -------- | -------- | -------- |\n| Comments     | Comments     | string     |\n| Feedback1     | Service     | Feedback Raing Enum     |\n| Feedback2     | Ambience     | Feedback Raing Enum     |\n| Feedback3     | Cleanliness     | Feedback Raing Enum     |\n| Feedback4     | Therapist     | Feedback Raing Enum     |\n| FeedbackAnswer1     | Recommendation     | bool     |\n| FeedbackAnswer2     | Share Feedback     | bool     |\n\n\n\n| Feedback Rating  | Enum  | \n| -------- | -------- | -------- |\n| Poor      | 1     | \n| Average      | 2     | \n| Good      | 3    | \n| Excellent      | 4     | \n| Outstanding      | 5    | \n\n",
+            "type": "object"
+        }
+    }
+}

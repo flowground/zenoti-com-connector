@@ -1,0 +1,9 @@
+{
+    "type": "object",
+    "properties": {
+        "InvoiceId": {
+            "required": true,
+            "type": "string"
+        }
+    }
+}

@@ -1,0 +1,35 @@
+{
+    "type": "object",
+    "properties": {
+        "center_id": {
+            "required": true,
+            "type": "string"
+        },
+        "start_date": {
+            "required": true,
+            "type": "string",
+            "format": "date-time"
+        },
+        "end_date": {
+            "required": true,
+            "type": "string",
+            "format": "date-time"
+        },
+        "status": {
+            "required": false,
+            "type": "integer"
+        },
+        "item_type": {
+            "required": false,
+            "type": "integer"
+        },
+        "Authorization": {
+            "required": true,
+            "type": "string"
+        },
+        "Content_Type": {
+            "required": false,
+            "type": "string"
+        }
+    }
+}

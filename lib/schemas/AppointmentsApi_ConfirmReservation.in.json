@@ -1,0 +1,24 @@
+{
+    "type": "object",
+    "properties": {
+        "ApiKey": {
+            "required": false,
+            "type": "string"
+        },
+        "Authorization": {
+            "required": false,
+            "type": "string"
+        },
+        "requestBody": {
+            "properties": {
+                "CenterId": {
+                    "type": "string"
+                },
+                "ReservationId": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        }
+    }
+}

@@ -1,0 +1,17 @@
+{
+    "type": "object",
+    "properties": {
+        "Authorization": {
+            "required": false,
+            "type": "string"
+        },
+        "Apikey": {
+            "required": false,
+            "type": "string"
+        },
+        "requestBody": {
+            "description": "Service id of the requested add on service is given as a json.",
+            "type": "object"
+        }
+    }
+}

@@ -1,0 +1,39 @@
+{
+    "type": "object",
+    "properties": {
+        "StartDate": {
+            "required": false,
+            "type": "string",
+            "format": "date-time"
+        },
+        "EndDate": {
+            "required": false,
+            "type": "string",
+            "format": "date-time"
+        },
+        "ItemType": {
+            "required": false,
+            "type": "integer"
+        },
+        "MembershipType": {
+            "required": false,
+            "type": "integer"
+        },
+        "IncludeExpiredPackageRevenue": {
+            "required": false,
+            "type": "boolean"
+        },
+        "ConsiderRefunds": {
+            "required": false,
+            "type": "boolean"
+        },
+        "Authorization": {
+            "required": false,
+            "type": "string"
+        },
+        "Content_Type": {
+            "required": false,
+            "type": "string"
+        }
+    }
+}

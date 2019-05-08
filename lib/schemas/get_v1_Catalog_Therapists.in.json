@@ -1,0 +1,60 @@
+{
+    "type": "object",
+    "properties": {
+        "CenterId": {
+            "required": true,
+            "type": "string"
+        },
+        "searchString": {
+            "required": true,
+            "type": "string"
+        },
+        "page": {
+            "required": false,
+            "type": "string"
+        },
+        "size": {
+            "required": false,
+            "type": "string"
+        },
+        "defaultPage": {
+            "required": false,
+            "type": "string"
+        },
+        "defaultSize": {
+            "required": false,
+            "type": "string"
+        },
+        "Sorters": {
+            "required": false,
+            "type": "array",
+            "items": {
+                "type": "string"
+            }
+        },
+        "filters": {
+            "required": false,
+            "type": "array",
+            "items": {
+                "type": "string"
+            }
+        },
+        "ServiceId": {
+            "required": false,
+            "type": "string"
+        },
+        "forDate": {
+            "required": false,
+            "type": "string",
+            "format": "date"
+        },
+        "Authorization": {
+            "required": false,
+            "type": "string"
+        },
+        "Apikey": {
+            "required": false,
+            "type": "string"
+        }
+    }
+}

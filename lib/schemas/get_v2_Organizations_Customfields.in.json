@@ -1,0 +1,13 @@
+{
+    "type": "object",
+    "properties": {
+        "custom_field_type": {
+            "required": false,
+            "type": "number"
+        },
+        "active": {
+            "required": false,
+            "type": "number"
+        }
+    }
+}

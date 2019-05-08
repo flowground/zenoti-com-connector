@@ -1,0 +1,16 @@
+{
+    "type": "object",
+    "properties": {
+        "Authorization": {
+            "required": false,
+            "type": "string"
+        },
+        "Apikey": {
+            "required": false,
+            "type": "string"
+        },
+        "requestBody": {
+            "type": "object"
+        }
+    }
+}

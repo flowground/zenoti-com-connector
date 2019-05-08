@@ -1,0 +1,17 @@
+{
+    "type": "object",
+    "properties": {
+        "Authorization": {
+            "required": false,
+            "type": "string"
+        },
+        "Apikey": {
+            "required": false,
+            "type": "string"
+        },
+        "requestBody": {
+            "description": "Input Json Fields\n\n| Field | Value Type | \n| -------- | -------- | \n| Code     | string     |      \n| InvoiceId     | GUID     | \n| CenterId     | GUID     | \n\n",
+            "type": "object"
+        }
+    }
+}

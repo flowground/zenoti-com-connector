@@ -1,0 +1,55 @@
+{
+    "type": "object",
+    "properties": {
+        "CenterId": {
+            "required": true,
+            "type": "string"
+        },
+        "page": {
+            "required": false,
+            "type": "integer"
+        },
+        "size": {
+            "required": false,
+            "type": "integer"
+        },
+        "defaultPage": {
+            "required": false,
+            "type": "integer"
+        },
+        "defaultSize": {
+            "required": false,
+            "type": "integer"
+        },
+        "Sorters": {
+            "required": false,
+            "type": "array",
+            "items": {
+                "type": "string"
+            }
+        },
+        "filters": {
+            "required": false,
+            "type": "array",
+            "items": {
+                "type": "string"
+            }
+        },
+        "CategoryId": {
+            "required": false,
+            "type": "string"
+        },
+        "SearchString": {
+            "required": false,
+            "type": "string"
+        },
+        "Authorization": {
+            "required": false,
+            "type": "string"
+        },
+        "Apikey": {
+            "required": false,
+            "type": "string"
+        }
+    }
+}

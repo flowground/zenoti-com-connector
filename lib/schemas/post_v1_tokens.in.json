@@ -1,0 +1,12 @@
+{
+    "type": "object",
+    "properties": {
+        "ApiKey": {
+            "required": false,
+            "type": "string"
+        },
+        "requestBody": {
+            "type": "string"
+        }
+    }
+}

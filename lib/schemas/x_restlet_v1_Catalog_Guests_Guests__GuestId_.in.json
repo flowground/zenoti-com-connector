@@ -1,0 +1,9 @@
+{
+    "type": "object",
+    "properties": {
+        "GuestId": {
+            "required": true,
+            "type": "string"
+        }
+    }
+}

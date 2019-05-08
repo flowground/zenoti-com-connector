@@ -1,0 +1,9 @@
+{
+    "type": "object",
+    "properties": {
+        "centerId": {
+            "required": true,
+            "type": "string"
+        }
+    }
+}

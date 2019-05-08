@@ -1,0 +1,251 @@
+{
+    "type": "object",
+    "properties": {
+        "ApiKey": {
+            "required": false,
+            "type": "string"
+        },
+        "Authorization": {
+            "required": false,
+            "type": "string"
+        },
+        "requestBody": {
+            "example": "{\n  \"CenterId\": \"{{centerid}}\",\n  \"Guest\": {\n    \"FirstName\": \"Dan\",\n    \"MiddleName\": \"John\",\n    \"LastName\": \"James\",\n    \"Email\": \"danjohn@zenotik.com\",\n    \"MobileNumber\": \"7677778435\",\n    \"Gender\": \"Male\",\n    \"DateOfBirth\": \"2005-05-05T10:24:12.656Z\",\n    \"ReceiveTransactionalEmail\": true,\n    \"ReceiveTransactionalSms\": true,\n    \"ReceiveMarketingEmail\": true,\n    \"ReceiveMarketingSms\": true\n  },\n  \"Validate\": true,\n  \"AllowDuplicateEmail\":false\n}",
+            "properties": {
+                "AllowDuplicateEmail": {
+                    "description": "To force email duplication",
+                    "type": "boolean"
+                },
+                "CenterId": {
+                    "description": "CenterId of the guest",
+                    "type": "string"
+                },
+                "Guest": {
+                    "properties": {
+                        "Address1": {
+                            "type": "string"
+                        },
+                        "Address2": {
+                            "type": "string"
+                        },
+                        "AnniversaryDate": {
+                            "format": "date-time",
+                            "type": "string"
+                        },
+                        "CenterCode": {
+                            "type": "string"
+                        },
+                        "CenterId": {
+                            "type": "string"
+                        },
+                        "CenterName": {
+                            "type": "string"
+                        },
+                        "City": {
+                            "type": "string"
+                        },
+                        "Code": {
+                            "description": "Code assigned to Guest",
+                            "type": "string"
+                        },
+                        "Country": {
+                            "properties": {
+                                "Code": {
+                                    "type": "string"
+                                },
+                                "Id": {
+                                    "format": "int32",
+                                    "type": "integer"
+                                },
+                                "Name": {
+                                    "type": "string"
+                                },
+                                "Nationality": {
+                                    "type": "string"
+                                },
+                                "PhoneCode": {
+                                    "format": "int32",
+                                    "type": "integer"
+                                }
+                            },
+                            "type": "object"
+                        },
+                        "CreationDate": {
+                            "format": "date-time",
+                            "type": "string"
+                        },
+                        "DOB_IncompleteYear": {
+                            "type": "string"
+                        },
+                        "DateOfBirth": {
+                            "format": "date-time",
+                            "type": "string"
+                        },
+                        "Email": {
+                            "description": "Email",
+                            "type": "string"
+                        },
+                        "FirstName": {
+                            "description": "First Name",
+                            "type": "string"
+                        },
+                        "Gender": {
+                            "description": "-1 - NotSpecified, 0 - Female, 1- Male",
+                            "enum": [
+                                -1,
+                                0,
+                                1
+                            ],
+                            "format": "int32",
+                            "type": "integer"
+                        },
+                        "GuestIndicator": {
+                            "type": "string"
+                        },
+                        "HomePhone": {
+                            "type": "string"
+                        },
+                        "HomePhoneModel": {
+                            "properties": {
+                                "CountryId": {
+                                    "format": "int32",
+                                    "type": "integer"
+                                },
+                                "DisplayNumber": {
+                                    "type": "string"
+                                },
+                                "Number": {
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        },
+                        "Id": {
+                            "description": "Unique Id of Guest",
+                            "type": "string"
+                        },
+                        "IsMember": {
+                            "format": "int32",
+                            "type": "integer"
+                        },
+                        "LastName": {
+                            "description": "Last Name",
+                            "type": "string"
+                        },
+                        "LastUpdated": {
+                            "format": "date-time",
+                            "type": "string"
+                        },
+                        "MergeIntoCode": {
+                            "type": "string"
+                        },
+                        "MergeIntoGuestId": {
+                            "type": "string"
+                        },
+                        "MiddleName": {
+                            "description": "Middle Name",
+                            "type": "string"
+                        },
+                        "MobileNumber": {
+                            "type": "string"
+                        },
+                        "MobilePhoneModel": {
+                            "properties": {
+                                "CountryId": {
+                                    "format": "int32",
+                                    "type": "integer"
+                                },
+                                "DisplayNumber": {
+                                    "type": "string"
+                                },
+                                "Number": {
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        },
+                        "Nationality": {
+                            "properties": {
+                                "Code": {
+                                    "type": "string"
+                                },
+                                "Id": {
+                                    "format": "int32",
+                                    "type": "integer"
+                                },
+                                "Name": {
+                                    "type": "string"
+                                },
+                                "Nationality": {
+                                    "type": "string"
+                                },
+                                "PhoneCode": {
+                                    "format": "int32",
+                                    "type": "integer"
+                                }
+                            },
+                            "type": "object"
+                        },
+                        "PostalCode": {
+                            "type": "string"
+                        },
+                        "ReceiveMarketingEmail": {
+                            "description": "Receive marketing email",
+                            "type": "boolean"
+                        },
+                        "ReceiveMarketingSms": {
+                            "description": "Receive marketing SMS",
+                            "type": "boolean"
+                        },
+                        "ReceiveTransactionalEmail": {
+                            "description": "Receive Email for transactions",
+                            "type": "boolean"
+                        },
+                        "ReceiveTransactionalSms": {
+                            "description": "Receive SMS alert for transactions",
+                            "type": "boolean"
+                        },
+                        "ReferralSource": {
+                            "properties": {
+                                "Id": {
+                                    "type": "string"
+                                },
+                                "Name": {
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        },
+                        "ReferredGuestId": {
+                            "type": "string"
+                        },
+                        "State": {
+                            "properties": {
+                                "Code": {
+                                    "type": "string"
+                                },
+                                "Id": {
+                                    "format": "int32",
+                                    "type": "integer"
+                                },
+                                "Name": {
+                                    "type": "string"
+                                },
+                                "ShortName": {
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "type": "object"
+                },
+                "Validate": {
+                    "description": "To force validation of input",
+                    "type": "boolean"
+                }
+            },
+            "type": "object"
+        }
+    }
+}

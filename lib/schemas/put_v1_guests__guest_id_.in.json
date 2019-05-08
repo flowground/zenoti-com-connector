@@ -1,0 +1,254 @@
+{
+    "type": "object",
+    "properties": {
+        "apikey": {
+            "required": false,
+            "type": "string"
+        },
+        "authorization": {
+            "required": false,
+            "type": "string"
+        },
+        "requestBody": {
+            "properties": {
+                "guest": {
+                    "description": "Definition of the representation for the guest object. ",
+                    "properties": {
+                        "CenterId": {
+                            "description": "Base center of the guest.",
+                            "type": "string"
+                        },
+                        "address1": {
+                            "description": "Address 1",
+                            "type": "string"
+                        },
+                        "address2": {
+                            "description": "Address 2",
+                            "type": "string"
+                        },
+                        "anniversarydate": {
+                            "description": "Anniversary Date",
+                            "format": "date-time",
+                            "type": "string"
+                        },
+                        "city": {
+                            "description": "City",
+                            "type": "string"
+                        },
+                        "code": {
+                            "description": "Code assigned to Guest",
+                            "type": "string"
+                        },
+                        "country": {
+                            "properties": {
+                                "Code": {
+                                    "type": "string"
+                                },
+                                "Id": {
+                                    "format": "int32",
+                                    "type": "integer"
+                                },
+                                "Name": {
+                                    "type": "string"
+                                },
+                                "Nationality": {
+                                    "type": "string"
+                                },
+                                "PhoneCode": {
+                                    "format": "int32",
+                                    "type": "integer"
+                                }
+                            },
+                            "type": "object"
+                        },
+                        "creationdate": {
+                            "description": "Creation date and time of guest record.",
+                            "format": "date-time",
+                            "type": "string"
+                        },
+                        "dateofbirth": {
+                            "description": "Date of Birth",
+                            "format": "date-time",
+                            "type": "string"
+                        },
+                        "dob_incompleteyear": {
+                            "description": "Date of birth without year",
+                            "type": "string"
+                        },
+                        "email": {
+                            "description": "Email",
+                            "type": "string"
+                        },
+                        "firstname": {
+                            "description": "First Name",
+                            "type": "string"
+                        },
+                        "gender": {
+                            "description": "Gender",
+                            "enum": [
+                                "male",
+                                "female",
+                                "other"
+                            ],
+                            "type": "string"
+                        },
+                        "guestindicator": {
+                            "description": "Category of a guest",
+                            "type": "string"
+                        },
+                        "homephonemodel": {
+                            "description": "Representation for phone object. ",
+                            "properties": {
+                                "country_id": {
+                                    "description": "Country id",
+                                    "format": "int32",
+                                    "type": "integer"
+                                },
+                                "displaynumber": {
+                                    "description": "Phone number with display format.",
+                                    "type": "string"
+                                },
+                                "number": {
+                                    "description": "Phone number",
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object",
+                            "x-restlet": {
+                                "section": "Models"
+                            }
+                        },
+                        "id": {
+                            "description": "Unique Id of Guest",
+                            "type": "string"
+                        },
+                        "is_member": {
+                            "description": "Indicates if guest has membership",
+                            "format": "int32",
+                            "type": "integer"
+                        },
+                        "lastname": {
+                            "description": "Last Name",
+                            "type": "string"
+                        },
+                        "lastupdated": {
+                            "description": "Last updated date and time of guest record.",
+                            "format": "date-time",
+                            "type": "string"
+                        },
+                        "middlename": {
+                            "description": "Middle Name",
+                            "type": "string"
+                        },
+                        "mobilephonemodel": {
+                            "description": "Representation for phone object. ",
+                            "properties": {
+                                "country_id": {
+                                    "description": "Country id",
+                                    "format": "int32",
+                                    "type": "integer"
+                                },
+                                "displaynumber": {
+                                    "description": "Phone number with display format.",
+                                    "type": "string"
+                                },
+                                "number": {
+                                    "description": "Phone number",
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object",
+                            "x-restlet": {
+                                "section": "Models"
+                            }
+                        },
+                        "nationality": {
+                            "properties": {
+                                "Code": {
+                                    "type": "string"
+                                },
+                                "Id": {
+                                    "format": "int32",
+                                    "type": "integer"
+                                },
+                                "Name": {
+                                    "type": "string"
+                                },
+                                "Nationality": {
+                                    "type": "string"
+                                },
+                                "PhoneCode": {
+                                    "format": "int32",
+                                    "type": "integer"
+                                }
+                            },
+                            "type": "object"
+                        },
+                        "postalcode": {
+                            "description": "Zipcode or postal code.",
+                            "type": "string"
+                        },
+                        "receivemarketingemail": {
+                            "description": "Receive marketing email preference.",
+                            "type": "boolean"
+                        },
+                        "receivemarketingsms": {
+                            "description": "Receive marketing SMS preference.",
+                            "type": "boolean"
+                        },
+                        "receivetransactionalemail": {
+                            "description": "Receive Email for transactions  preference.",
+                            "type": "boolean"
+                        },
+                        "receivetransactionalsms": {
+                            "description": "Receive SMS alert for transactions  preference.",
+                            "type": "boolean"
+                        },
+                        "referralsource": {
+                            "properties": {
+                                "Id": {
+                                    "type": "string"
+                                },
+                                "Name": {
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        },
+                        "referredguest_id": {
+                            "description": "Guest who referred the guest.",
+                            "type": "string"
+                        },
+                        "state": {
+                            "properties": {
+                                "Code": {
+                                    "type": "string"
+                                },
+                                "Id": {
+                                    "format": "int32",
+                                    "type": "integer"
+                                },
+                                "Name": {
+                                    "type": "string"
+                                },
+                                "ShortName": {
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        },
+                        "username": {
+                            "description": "Username of guest",
+                            "type": "string"
+                        }
+                    },
+                    "type": "object",
+                    "x-restlet": {
+                        "section": "Models"
+                    }
+                }
+            },
+            "type": "object"
+        }
+    }
+}

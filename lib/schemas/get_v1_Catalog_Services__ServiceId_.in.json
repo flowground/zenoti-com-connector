@@ -1,0 +1,21 @@
+{
+    "type": "object",
+    "properties": {
+        "CenterId": {
+            "required": true,
+            "type": "string"
+        },
+        "parentCategoryId": {
+            "required": false,
+            "type": "string"
+        },
+        "Authorization": {
+            "required": false,
+            "type": "string"
+        },
+        "Apikey": {
+            "required": false,
+            "type": "string"
+        }
+    }
+}

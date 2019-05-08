@@ -1,0 +1,336 @@
+{
+    "type": "object",
+    "properties": {
+        "requestBody": {
+            "description": "Representation of appointment model in a summary view.",
+            "properties": {
+                "actual_completed_time": {
+                    "description": "Actual completed time",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "actual_start_time": {
+                    "description": "Actual start time",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "alternative_room_id": {
+                    "type": "string"
+                },
+                "alternative_therapist_id": {
+                    "type": "string"
+                },
+                "appointment_group_id": {
+                    "description": "Appointment group id",
+                    "type": "string"
+                },
+                "appointment_id": {
+                    "description": "Appointment id",
+                    "type": "string"
+                },
+                "appointment_progress": {
+                    "description": "| Name | Value | \n| -------- | -------- |\n| Not started     | 0     | \n| Started | 1 |\n| Completed | 2|",
+                    "enum": [
+                        "0",
+                        "1",
+                        "2"
+                    ],
+                    "type": "integer",
+                    "x-restlet": {
+                        "section": "Models"
+                    }
+                },
+                "appointment_segment_id": {
+                    "description": "Appointment segment id",
+                    "type": "string"
+                },
+                "appointment_source": {
+                    "description": "| Name | Value |\n| -------- | -------- |\n| Website | 0 |\n| Webstore | 1 |\n| MobileApp | 2 |\n| Take5App | 3 |\n| MobilePos | 4 |",
+                    "enum": [
+                        "0",
+                        "1",
+                        "2",
+                        "3",
+                        "4"
+                    ],
+                    "type": "integer",
+                    "x-restlet": {
+                        "section": "Models"
+                    }
+                },
+                "available_rooms": {
+                    "items": {
+                        "properties": {
+                            "id": {
+                                "type": "string"
+                            },
+                            "name": {
+                                "type": "string"
+                            }
+                        },
+                        "type": "object",
+                        "x-restlet": {
+                            "section": "Models"
+                        }
+                    },
+                    "type": "array"
+                },
+                "available_therapists": {
+                    "items": {
+                        "properties": {
+                            "first_name": {
+                                "type": "string"
+                            },
+                            "gender": {
+                                "description": "| Name | Value |\n| -------- | -------- | -------- |\n| Male     | 1     |\n| Female     | 0     |\n| Not specified     | -1     |",
+                                "enum": [
+                                    "0",
+                                    "1",
+                                    "-1"
+                                ],
+                                "type": "integer",
+                                "x-restlet": {
+                                    "section": "Models"
+                                }
+                            },
+                            "id": {
+                                "type": "string"
+                            },
+                            "last_name": {
+                                "type": "string"
+                            }
+                        },
+                        "type": "object",
+                        "x-restlet": {
+                            "section": "Models"
+                        }
+                    },
+                    "type": "array"
+                },
+                "category": {
+                    "description": "Category",
+                    "type": "string"
+                },
+                "checkin_time": {
+                    "description": "Check in time",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "employee_vanity_image_url": {
+                    "type": "string"
+                },
+                "end_date": {
+                    "description": "End date and time of appointment",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "form_id": {
+                    "description": "Form id",
+                    "type": "string"
+                },
+                "guest": {
+                    "properties": {
+                        "first_name": {
+                            "type": "string"
+                        },
+                        "gender": {
+                            "description": "| Name | Value |\n| -------- | -------- | -------- |\n| Male     | 1     |\n| Female     | 0     |\n| Not specified     | -1     |",
+                            "enum": [
+                                "0",
+                                "1",
+                                "-1"
+                            ],
+                            "type": "integer",
+                            "x-restlet": {
+                                "section": "Models"
+                            }
+                        },
+                        "id": {
+                            "type": "string"
+                        },
+                        "indicator": {
+                            "type": "string"
+                        },
+                        "last_name": {
+                            "type": "string"
+                        },
+                        "phone": {
+                            "description": "Representation for phone object. ",
+                            "properties": {
+                                "country_id": {
+                                    "description": "Country id",
+                                    "format": "int32",
+                                    "type": "integer"
+                                },
+                                "displaynumber": {
+                                    "description": "Phone number with display format.",
+                                    "type": "string"
+                                },
+                                "number": {
+                                    "description": "Phone number",
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object",
+                            "x-restlet": {
+                                "section": "Models"
+                            }
+                        }
+                    },
+                    "type": "object",
+                    "x-restlet": {
+                        "section": "Models"
+                    }
+                },
+                "invoice_id": {
+                    "description": "Invoice id",
+                    "type": "string"
+                },
+                "locked": {
+                    "description": "Is appointment locked",
+                    "type": "boolean"
+                },
+                "notes": {
+                    "description": "Notes",
+                    "type": "string"
+                },
+                "price": {
+                    "properties": {
+                        "CurrencyId": {
+                            "format": "int32",
+                            "type": "integer"
+                        },
+                        "Discount": {
+                            "format": "double",
+                            "type": "number"
+                        },
+                        "Final": {
+                            "format": "double",
+                            "type": "number"
+                        },
+                        "Final1": {
+                            "format": "double",
+                            "type": "number"
+                        },
+                        "RoundingCorrection": {
+                            "format": "double",
+                            "type": "number"
+                        },
+                        "SSG": {
+                            "format": "double",
+                            "type": "number"
+                        },
+                        "Sales": {
+                            "format": "double",
+                            "type": "number"
+                        },
+                        "Tax": {
+                            "format": "double",
+                            "type": "number"
+                        },
+                        "Tip": {
+                            "format": "double",
+                            "type": "number"
+                        }
+                    },
+                    "type": "object"
+                },
+                "service": {
+                    "properties": {
+                        "id": {
+                            "type": "string"
+                        },
+                        "name": {
+                            "type": "string"
+                        }
+                    },
+                    "type": "object",
+                    "x-restlet": {
+                        "section": "Models"
+                    }
+                },
+                "service_custom_data_indicator": {
+                    "description": "Service custom data indicator",
+                    "type": "string"
+                },
+                "start_date": {
+                    "description": "Start date and time of appointment",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "status": {
+                    "description": "| Name | Value |\n| -------- | -------- |\n| No show | -2 |\n| Cancelled | -1 |\n| New | 0 |\n| Completed | 1 |\n| Checkedin | 2|\n| Confirmed | 4 |\n| Break | 10 |\n| Not specified | 11 |\n| Available | 20 |",
+                    "enum": [
+                        "-2",
+                        "-1",
+                        "0",
+                        "1",
+                        "2",
+                        "4",
+                        "10",
+                        "11",
+                        "20"
+                    ],
+                    "type": "integer",
+                    "x-restlet": {
+                        "section": "Models"
+                    }
+                },
+                "sub_category": {
+                    "description": "Sub category",
+                    "type": "string"
+                },
+                "therapist": {
+                    "properties": {
+                        "first_name": {
+                            "type": "string"
+                        },
+                        "gender": {
+                            "description": "| Name | Value |\n| -------- | -------- | -------- |\n| Male     | 1     |\n| Female     | 0     |\n| Not specified     | -1     |",
+                            "enum": [
+                                "0",
+                                "1",
+                                "-1"
+                            ],
+                            "type": "integer",
+                            "x-restlet": {
+                                "section": "Models"
+                            }
+                        },
+                        "id": {
+                            "type": "string"
+                        },
+                        "last_name": {
+                            "type": "string"
+                        }
+                    },
+                    "type": "object",
+                    "x-restlet": {
+                        "section": "Models"
+                    }
+                },
+                "therapist_preference_type": {
+                    "description": "| Name | Value |\n| -------- | -------- | -------- |\n| Any     | 0    |\n| Male     | 1   |\n| Female     | 2    |\n| Specific | 3|\n| Multiple| 4 |",
+                    "enum": [
+                        "0",
+                        "1",
+                        "2",
+                        "3",
+                        "4"
+                    ],
+                    "type": "integer",
+                    "x-restlet": {
+                        "section": "Models"
+                    }
+                }
+            },
+            "required": [
+                "appointment_id"
+            ],
+            "type": "object",
+            "x-restlet": {
+                "section": "Models"
+            }
+        }
+    }
+}

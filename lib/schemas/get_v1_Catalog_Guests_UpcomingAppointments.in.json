@@ -1,0 +1,29 @@
+{
+    "type": "object",
+    "properties": {
+        "Page": {
+            "required": false,
+            "type": "integer"
+        },
+        "Size": {
+            "required": false,
+            "type": "integer"
+        },
+        "Sorters": {
+            "required": false,
+            "type": "string"
+        },
+        "Filters": {
+            "required": false,
+            "type": "string"
+        },
+        "Authorization": {
+            "required": false,
+            "type": "string"
+        },
+        "Apikey": {
+            "required": false,
+            "type": "string"
+        }
+    }
+}
